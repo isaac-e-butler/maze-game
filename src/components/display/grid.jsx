@@ -1,14 +1,14 @@
 import React from 'react';
-import Row from './row';
+import Column from './column';
 
-const Grid = ({ maxRow, maxCol, char }) => {
-    let rows = [];
+const Grid = ({ maxCol, maxRow, char }) => {
+    let columns = [];
 
-    for (let i = 0; i < maxRow; i++) {
-        rows.push(<Row maxCol={maxCol} char={char} rowId={i} key={i} />);
+    for (let i = 0; i < maxCol; i++) {
+        columns.push(<Column maxRow={maxRow} char={char} colId={i} key={i} />);
     }
 
-    return <div className="grid">{rows}</div>;
+    return <div className="grid">{columns}</div>;
 };
 
 export default Grid;
