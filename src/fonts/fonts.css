@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'mono';
+    src: url('./ShareTechMono-Regular.ttf');
+}
+
+p {
+    font-family: 'mono';
+    font-size: 24px;
+    margin: 10px;
+}
