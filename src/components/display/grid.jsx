@@ -1,3 +1,4 @@
+import './grid.css';
 import React from 'react';
 import Column from './column';
 
