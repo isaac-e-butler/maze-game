@@ -5,9 +5,9 @@ const Row = ({ maxCol, char, rowId }) => {
 
     for (let i = 0; i < maxCol; i++) {
         columns.push(
-            <li id={i}>
+            <li id={i} key={i}>
                 <p>{char}</p>
-            </li>,
+            </li>
         );
     }
 

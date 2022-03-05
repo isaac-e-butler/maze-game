@@ -1,3 +1,4 @@
+import './fonts/fonts.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Maze from './components/maze';
@@ -7,7 +8,7 @@ ReactDOM.render(
     <React.StrictMode>
         <Maze />
     </React.StrictMode>,
-    document.getElementById('root'),
+    document.getElementById('root')
 );
 
 reportWebVitals();
