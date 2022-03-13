@@ -11,6 +11,6 @@
     "noImplicitAny": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "server.js"],
+  "include": ["src/**/*", "index.js"],
   "exclude": ["node_modules"]
 }

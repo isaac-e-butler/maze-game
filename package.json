@@ -2,7 +2,7 @@
   "name": "maze-game",
   "description": "",
   "version": "1.0",
-  "main": "server.js",
+  "main": "index.js",
   "dependencies": {
     "jest": "^27.5.1",
     "prettier": "^2.5.1",
@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc -b",
-    "start": "npx tsc -b && node ./server.js"
+    "start": "npx tsc -b && node ./index.js"
   },
   "author": "GhostRunners25",
   "license": "ISC"
