@@ -26,18 +26,18 @@ const server = http.createServer((request, response) => {
         response.writeHead(200, { 'Content-Type': contentType });
         const readStream = fs.createReadStream(filePath);
         readStream.pipe(response);
-        console.debug(`successful [✔]\n`);
+        console.debug(`[✓] - successful\n`);
     } else {
-        console.debug(`failed [✖]\n`);
+        console.debug(`[✕] - failed \n`);
         console.warn(
-            `warning: missing content type for file extension '${ext}'\n`
+            `[!] - missing content type for file extension '${ext}'\n`
         );
     }
 });
 
 server.listen(port, (error) => {
     if (error) {
-        console.error(`error: ${error}\n`);
+        console.error(`[✕] - ${error}\n`);
     } else {
         console.log(`listening on port ${port}...\n`);
     }
