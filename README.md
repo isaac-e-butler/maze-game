@@ -11,5 +11,5 @@ last run using:
 
 -   open the terminal/command-prompt
 -   install the node modules using **_npm install_**
--   write **_npm start_** in the directory containing **_server.js_**.
+-   write **_npm start_** in the directory containing **_index.js_**.
 -   open web-browser at **_localhost:3000_**.
