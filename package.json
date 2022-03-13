@@ -10,7 +10,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server.js"
+    "build": "npx tsc -b",
+    "start": "npx tsc -b && node ./server.js"
   },
   "author": "GhostRunners25",
   "license": "ISC"

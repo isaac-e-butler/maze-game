@@ -7,13 +7,14 @@ const extTypes = {
     '.html': 'text/html',
     '.css': 'text/css',
     '.js': 'text/javascript',
-    '.ts': 'text/typescript',
 };
+
+const index = 'index.html';
 
 const server = http.createServer((request, response) => {
     let filePath = path.join(
         './src/',
-        request.url === '/' ? 'index.html' : request.url
+        request.url === '/' ? index : request.url
     );
 
     let ext = path.extname(filePath);
@@ -28,7 +29,7 @@ const server = http.createServer((request, response) => {
         readStream.pipe(response);
         console.debug(`[✓] - successful\n`);
     } else {
-        console.debug(`[✕] - failed \n`);
+        console.debug(`[✕] - failed\n`);
         console.warn(
             `[!] - missing content type for file extension '${ext}'\n`
         );
