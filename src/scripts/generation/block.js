@@ -1,8 +1,8 @@
 export default class Block {
-    constructor(x, y, type, pixel) {
+    constructor(x, y, pixel) {
         this.x_raw = x * pixel;
         this.y_raw = y * pixel;
-        this.type = type;
+        this.type = undefined;
         this.y = y;
         this.x = x;
     }

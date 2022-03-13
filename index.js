@@ -20,8 +20,8 @@ const server = http.createServer((request, response) => {
     let ext = path.extname(filePath);
     let contentType = extTypes.hasOwnProperty(ext) && extTypes[ext];
 
-    console.info(`[i] - file path: ${filePath}`);
-    console.info(`[i] - content type: ${contentType}`);
+    console.info(`[-] - file path: ${filePath}`);
+    console.info(`[-] - content type: ${contentType}`);
 
     if (contentType) {
         response.writeHead(200, { 'Content-Type': contentType });
