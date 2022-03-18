@@ -7,6 +7,8 @@ last run using:
 -   node v16.14.0
 -   npm v8.5.3
 
+these can be installed by visiting **\_https://nodejs.org/en/**\_.
+
 ### Start
 
 -   open the terminal/command-prompt
