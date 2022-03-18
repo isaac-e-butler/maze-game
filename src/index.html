@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Maze</title>
-        <link rel="stylesheet" type="text/css" href="main.css" />
-        <script type="module" src="scripts/main.js"></script>
+        <meta charset="UTF-8" />
+        <title>Maze Game</title>
+        <link rel="stylesheet" type="text/css" href="index.css" />
+        <link rel="stylesheet" type="text/css" href="font/font.css" />
+        <script type="module" src="main.js"></script>
     </head>
     <body>
-        <canvas width="256" height="256"></canvas>
+        <div class="container">
+            <div id="room-title" roomTitle="MAZE GAME">MAZE GAME</div>
+            <div id="stage">
+                <canvas width="310" height="310" id="bg-layer"></canvas>
+                <canvas width="310" height="310" id="enemy-layer"></canvas>
+                <canvas width="310" height="310" id="player-layer"></canvas>
+            </div>
+            <div id="screen">
+                <h3 id="status-text"></h3>
+                <button id="play-btn">PLAY</button>
+            </div>
+            <progress id="collected" value="0" max="0"></progress>
+            <ul class="control-options">
+                <li title="move up">
+                    <p class="icon" id="KeyW">W</p>
+                </li>
+                <li title="move left">
+                    <p class="icon" id="KeyA">A</p>
+                </li>
+                <li title="move down">
+                    <p class="icon" id="KeyS">S</p>
+                </li>
+                <li title="move right">
+                    <p class="icon" id="KeyD">D</p>
+                </li>
+                <li title="attack">
+                    <p class="icon" id="KeyK">K</p>
+                </li>
+                <li title="pick up">
+                    <p class="icon" id="KeyL">L</p>
+                </li>
+            </ul>
+        </div>
+        <div class="hide-me">
+            <canvas width="31" height="31" id="image-map"></canvas>
+        </div>
     </body>
 </html>

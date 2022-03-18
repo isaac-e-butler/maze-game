@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'main';
+    src: url('./SyneMono-Regular.ttf');
+}
+
+div#room-title::before,
+div#room-title::after {
+    content: attr(roomTitle);
+    position: absolute;
+    left: 0px;
+    opacity: 0.8;
+}
+
+div#room-title::before {
+    animation: flickerTop 1.5s linear infinite;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+}
+
+div#room-title {
+    animation: flicker 2s linear infinite;
+    font-size: 32px;
+    opacity: 0.8;
+    user-select: none;
+}
+
+div#room-title::after {
+    animation: flickerBottom 2.5s linear infinite;
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+}
+
+@keyframes flicker {
+    8%,
+    74% {
+        transform: translate(1px, 0px) skew(-1deg);
+    }
+    16%,
+    70% {
+        transform: translate(-1px, 0px) skew(1deg);
+    }
+    72% {
+        transform: translate(0px, 0px) skew(-3deg);
+        opacity: 1;
+    }
+}
+
+@keyframes flickerTop {
+    8%,
+    74% {
+        transform: translate(1px, -1px);
+    }
+    16%,
+    70% {
+        transform: translate(-1px, 1px);
+    }
+    72% {
+        transform: translate(6px, 3px);
+        opacity: 1;
+    }
+}
+
+@keyframes flickerBottom {
+    8%,
+    74% {
+        transform: translate(-1px, 1px);
+    }
+    16%,
+    70% {
+        transform: translate(1px, -1px);
+    }
+    72% {
+        transform: translate(-8px, -4px);
+        opacity: 1;
+    }
+}

@@ -1,44 +1,46 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+// const http = require('http');
+import * as http from 'http';
+import * as path from 'path';
+import * as fs from 'fs';
+// const path = require('path');
+// const fs = require('fs');
 const port = 3000;
 
-const extTypes = {
+const extToType = {
     '.html': 'text/html',
     '.css': 'text/css',
-    '.js': 'text/javascript',
+    '.js': 'application/javascript',
+    '.json': 'application/json',
+    '.ttf': 'application/x-font-ttf',
+    '.png': 'image/png',
 };
 
-const index = 'index.html';
-
 const server = http.createServer((request, response) => {
-    let filePath = path.join(
+    const filePath = path.join(
         './src/',
-        request.url === '/' ? index : request.url
+        request.url === '/' ? 'index.html' : request.url
     );
 
-    let ext = path.extname(filePath);
-    let contentType = extTypes.hasOwnProperty(ext) && extTypes[ext];
+    const ext = path.extname(filePath);
+    const contentType = extToType.hasOwnProperty(ext) && extToType[ext];
 
-    console.info(`[-] - file path: ${filePath}`);
-    console.info(`[-] - content type: ${contentType}`);
+    console.info(`[i] - file path: ${filePath}`);
+    console.info(`[i] - content type: ${contentType}`);
 
     if (contentType) {
         response.writeHead(200, { 'Content-Type': contentType });
         const readStream = fs.createReadStream(filePath);
         readStream.pipe(response);
-        console.debug(`[✓] - successful\n`);
+        console.log(`[/] - successful\n`);
     } else {
-        console.debug(`[✕] - failed\n`);
-        console.warn(
-            `[!] - missing content type for file extension '${ext}'\n`
-        );
+        console.error(`[x] - failed\n`);
+        console.warn(`[!] - missing content type for extension ${ext}\n`);
     }
 });
 
 server.listen(port, (error) => {
     if (error) {
-        console.error(`[✕] - ${error}\n`);
+        console.error(`[x] - ${error}\n`);
     } else {
         console.log(`listening on port ${port}...\n`);
     }

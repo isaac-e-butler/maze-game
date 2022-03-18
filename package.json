@@ -1,16 +1,21 @@
 {
   "name": "maze-game",
-  "description": "",
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom-sixteen"
+  },
   "version": "1.0",
+  "description": "",
   "main": "index.js",
   "dependencies": {
     "jest": "^27.5.1",
+    "jest-environment-jsdom-sixteen": "^2.0.0",
     "prettier": "^2.5.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config ./jest.config.json",
     "start": "node ./index.js"
   },
-  "author": "GhostRunners25",
+  "type":"module",
+  "author": "Isaac Butler",
   "license": "ISC"
 }

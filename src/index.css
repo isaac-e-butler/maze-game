@@ -1,0 +1,120 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #222222;
+    font-family: 'main';
+    color: white;
+}
+
+div#stage,
+div#screen {
+    position: absolute;
+    background-color: black;
+    width: 310px;
+    height: 310px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    font-family: 'main';
+    font-size: 24px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 75%;
+}
+
+h3 {
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 25%;
+}
+
+canvas {
+    position: absolute;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 410px;
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    display: flex;
+    position: absolute;
+    top: 95.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+li {
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.icon,
+button {
+    user-select: none;
+    padding: 0px 5px 1px 5px;
+    border: 1px solid #555555;
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+.icon:hover,
+button:hover {
+    background-color: #555555;
+    border-color: #777777;
+}
+
+.icon:active,
+.icon.pressed,
+button:active {
+    background-color: #222222;
+    border-color: #333333;
+}
+
+.hide-me {
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+progress {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 5px;
+    border-radius: 0px;
+    border: white solid 1px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #000000;
+}
+
+progress::-webkit-progress-value {
+    background-color: #ddcf5c;
+}
