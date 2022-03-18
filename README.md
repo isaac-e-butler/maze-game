@@ -7,7 +7,7 @@ last run using:
 -   node v16.14.0
 -   npm v8.5.3
 
-these can be installed by visiting **\_https://nodejs.org/en/**\_.
+these can be installed by visiting https://nodejs.org/en/.
 
 ### Start
 
