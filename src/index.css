@@ -5,6 +5,7 @@ body {
     background-color: #222222;
     font-family: 'main';
     color: white;
+    user-select: none;
 }
 
 div#stage,
@@ -64,18 +65,14 @@ ul {
     transform: translate(-50%, -50%);
 }
 
-li {
-    margin: 0px 5px;
-    cursor: pointer;
-}
-
 .icon,
 button {
-    user-select: none;
+    margin: 0px 5px;
     padding: 0px 5px 1px 5px;
     border: 1px solid #555555;
     background-color: #333333;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .icon:hover,
