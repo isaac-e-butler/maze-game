@@ -1,10 +1,7 @@
-// const http = require('http');
 import * as http from 'http';
 import * as path from 'path';
 import * as fs from 'fs';
-// const path = require('path');
-// const fs = require('fs');
-const port = 3000;
+const port = process.env.port || 3000;
 
 const extToType = {
     '.html': 'text/html',
