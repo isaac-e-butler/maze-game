@@ -40,7 +40,8 @@ div#screen {
     top: 50%;
 }
 
-button {
+button,
+input[type='button'] {
     cursor: pointer;
     color: white;
     font-family: 'main';
@@ -109,7 +110,8 @@ canvas {
 }
 
 .icon,
-button {
+button,
+input[type='button'] {
     -webkit-tap-highlight-color: transparent;
     padding: 0px 8px 1px 8px;
     border: 1px solid #555555;
@@ -119,7 +121,8 @@ button {
 }
 
 .icon,
-button {
+button,
+input[type='button'] {
     -webkit-tap-highlight-color: transparent;
     padding: 0px 8px 1px 8px;
     border: 1px solid #555555;
@@ -129,14 +132,16 @@ button {
 }
 
 .icon:hover,
-button:hover {
+button:hover,
+input[type='button']:hover {
     background-color: #555555;
     border-color: #777777;
 }
 
 .icon:active,
 .icon.pressed,
-button:active {
+button:active,
+input[type='button']:active {
     background-color: #222222;
     border-color: #333333;
 }
