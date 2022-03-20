@@ -15,29 +15,28 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 310px;
-    height: 410px;
+    height: 510px;
     display: flex;
     justify-content: center;
 }
 
-div#stage {
-    position: absolute;
-    background-color: black;
-    width: 310px;
-    height: 310px;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-}
-
+div#stage,
 div#screen {
     position: absolute;
     background-color: black;
-    width: 320px;
-    height: 320px;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 50%;
+    top: 40%;
+}
+
+div#stage {
+    width: 310px;
+    height: 310px;
+}
+
+div#screen {
+    width: 320px;
+    height: 320px;
 }
 
 button {
@@ -67,14 +66,14 @@ canvas {
 
 .movement {
     position: absolute;
-    top: 100%;
+    top: 80%;
     left: 30%;
     transform: translate(-50%, -50%);
 }
 
 .actions {
     position: absolute;
-    top: 100%;
+    top: 80%;
     left: 70%;
     transform: translate(-50%, -50%);
 }
@@ -160,7 +159,7 @@ button:active {
 
 progress {
     position: absolute;
-    top: 92%;
+    top: 73.5%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 310px;
