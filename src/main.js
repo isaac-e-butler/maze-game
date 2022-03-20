@@ -8,7 +8,7 @@ import { randomInt } from './scripts/common.js';
 const playBtn = document.getElementById('play-btn');
 let interval;
 
-export default function Main() {
+function Main() {
     const waitUntilLoaded = () => {
         if (!objectData.ready) {
             playBtn.onclick = () => {
@@ -44,4 +44,4 @@ function Play() {
     interval = setInterval(Update, 200);
 }
 
-// Main();
+Main();
