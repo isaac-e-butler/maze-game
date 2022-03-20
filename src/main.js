@@ -14,6 +14,9 @@ function Main() {
             playBtn.onclick = () => {
                 Play();
             };
+            playBtn.ontouchstart = () => {
+                Play();
+            };
         } else {
             setTimeout(waitUntilLoaded);
         }
