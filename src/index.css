@@ -6,7 +6,6 @@ body {
     font-family: 'main';
     color: white;
     user-select: none;
-    user-zoom: fixed;
     touch-action: none;
 }
 
