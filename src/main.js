@@ -9,6 +9,7 @@ const playBtn = document.getElementById('play-btn');
 let interval;
 
 function Main() {
+    ShowEndScreen('UNDER MAINTENANCE');
     const waitUntilLoaded = () => {
         if (!objectData.ready) {
             playBtn.onclick = () => {
