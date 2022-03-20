@@ -12,9 +12,9 @@ function Main() {
     const waitUntilLoaded = () => {
         if (!objectData.ready) {
             playBtn.onclick = () => {
-                Play();
                 document.getElementById('progress').setAttribute('max', 100);
                 document.getElementById('progress').setAttribute('value', 50);
+                //Play();
             };
         } else {
             setTimeout(waitUntilLoaded);
