@@ -19,12 +19,21 @@ body {
     justify-content: center;
 }
 
-div#stage,
-div#screen {
+div#stage {
     position: absolute;
     background-color: black;
     width: 310px;
     height: 310px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+div#screen {
+    position: absolute;
+    background-color: black;
+    width: 320px;
+    height: 320px;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
@@ -56,14 +65,14 @@ canvas {
 
 .movement {
     position: absolute;
-    top: 98%;
+    top: 100%;
     left: 30%;
     transform: translate(-50%, -50%);
 }
 
 .actions {
     position: absolute;
-    top: 98%;
+    top: 100%;
     left: 70%;
     transform: translate(-50%, -50%);
 }
@@ -133,7 +142,7 @@ button:active {
 
 progress {
     position: absolute;
-    top: 90%;
+    top: 92%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 310px;
