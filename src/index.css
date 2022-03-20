@@ -80,39 +80,45 @@ canvas {
 }
 
 #KeyW {
+    padding: 4px 12px 4px 12px;
     top: 0px;
     left: 0px;
 }
 
 #KeyA {
-    top: 36px;
-    left: -36px;
+    padding: 2px 10px 6px 14px;
+    top: 40px;
+    left: -40px;
 }
 
 #KeyS {
-    top: 70px;
+    padding: 0px 12px 8px 12px;
+    top: 80px;
     left: 0px;
 }
 
 #KeyD {
-    top: 36px;
-    left: 36px;
+    padding: 2px 14px 6px 10px;
+    top: 40px;
+    left: 40px;
 }
 
 #KeyK {
+    padding: 4px 12px 4px 12px;
     top: 0px;
     left: 0px;
 }
 
 #KeyL {
-    top: 70px;
-    left: 36px;
+    padding: 4px 12px 4px 12px;
+    top: 80px;
+    left: 40px;
 }
 
 .icon,
 button {
     -webkit-tap-highlight-color: transparent;
-    padding: 0px 8px 1px 8px;
+    /* padding: 0px 8px 1px 8px; */
     border: 1px solid #555555;
     background-color: #333333;
     border-radius: 5px;
