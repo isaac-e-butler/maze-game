@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <title>Maze Game</title>
         <link rel="stylesheet" type="text/css" href="index.css" />
@@ -26,10 +26,18 @@
             <progress id="collected" value="0" max="0"></progress>
             <div class="control-options">
                 <div class="movement">
-                    <button title="move up" class="icon" id="KeyW">W</button>
-                    <button title="move left" class="icon" id="KeyA">A</button>
-                    <button title="move down" class="icon" id="KeyS">S</button>
-                    <button title="move right" class="icon" id="KeyD">D</button>
+                    <button title="move up" class="icon" id="KeyW">
+                        <span class="arrow up"></span>
+                    </button>
+                    <button title="move left" class="icon" id="KeyA">
+                        <span class="arrow left"></span>
+                    </button>
+                    <button title="move down" class="icon" id="KeyS">
+                        <span class="arrow down"></span>
+                    </button>
+                    <button title="move right" class="icon" id="KeyD">
+                        <span class="arrow right"></span>
+                    </button>
                 </div>
                 <div class="actions">
                     <button title="attack" class="icon" id="KeyK">K</button>

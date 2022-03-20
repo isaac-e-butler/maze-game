@@ -117,6 +117,16 @@ button {
     cursor: pointer;
 }
 
+.icon,
+button {
+    -webkit-tap-highlight-color: transparent;
+    padding: 0px 8px 1px 8px;
+    border: 1px solid #555555;
+    background-color: #333333;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .icon:hover,
 button:hover {
     background-color: #555555;
