@@ -1,4 +1,4 @@
-import config from './object-config.json' assert { type: 'json' };
+import { objectConfig } from './object.config.js';
 import { objectData } from './objectData.js';
 import {
     ClearAllEnemies,
@@ -23,7 +23,7 @@ const KeyK = document.getElementById('KeyK');
 const KeyL = document.getElementById('KeyL');
 const pressed = ' pressed';
 
-const size = config.objectSize;
+const size = objectConfig.size;
 
 export function SpawnPlayer(playerData) {
     objectData.player.object = new Player(playerData);

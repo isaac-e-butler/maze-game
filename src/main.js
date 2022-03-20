@@ -1,4 +1,4 @@
-import config from './maze-config.json' assert { type: 'json' };
+import { mazeConfig } from './maze.config.js';
 import { objectData } from './scripts/objectData.js';
 import SetObjectData from './scripts/setObjectData.js';
 import RenderRoom, { ShowEndScreen } from './scripts/renderer.js';
@@ -18,7 +18,7 @@ function Main() {
             setTimeout(waitUntilLoaded);
         }
     };
-    SetObjectData(config.rooms[randomInt(0, config.rooms.length - 1)]);
+    SetObjectData(mazeConfig.rooms[randomInt(0, mazeConfig.rooms.length - 1)]);
     waitUntilLoaded();
 }
 

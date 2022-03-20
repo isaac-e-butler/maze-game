@@ -1,4 +1,4 @@
-import config from './object-config.json' assert { type: 'json' };
+import { objectConfig } from './object.config.js';
 import { bgLayer, enemyLayer, playerLayer } from './renderer.js';
 
 export const objectData = {
@@ -6,12 +6,12 @@ export const objectData = {
     won: false,
     roomTitle: '',
     walls: {
-        src: config.wall.src,
+        src: objectConfig.wall.src,
         layer: bgLayer,
         collection: [],
     },
     player: {
-        src: config.player.src,
+        src: objectConfig.player.src,
         layer: playerLayer,
         x: undefined,
         y: undefined,
@@ -21,22 +21,22 @@ export const objectData = {
         alive: false,
     },
     enemy: {
-        src_full: config.enemy.src_full,
-        src_half: config.enemy.src_half,
-        src_low: config.enemy.src_low,
-        start_hp: config.enemy.start_hp,
+        src_full: objectConfig.enemy.src_full,
+        src_half: objectConfig.enemy.src_half,
+        src_low: objectConfig.enemy.src_low,
+        start_hp: objectConfig.enemy.start_hp,
         layer: enemyLayer,
         collection: [],
     },
     weapon: {
-        src: config.weapon.src,
+        src: objectConfig.weapon.src,
         layer: playerLayer,
         x: undefined,
         y: undefined,
         pickedUp: false,
     },
     treasure: {
-        src: config.treasure.src,
+        src: objectConfig.treasure.src,
         layer: bgLayer,
         collection: [],
     },

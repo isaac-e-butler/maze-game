@@ -1,4 +1,4 @@
-import config from './object-config.json' assert { type: 'json' };
+import { objectConfig } from './object.config.js';
 import { objectData } from './objectData.js';
 import { Enemy } from './enemy.js';
 
@@ -21,8 +21,8 @@ export default function SetObjectData(room) {
             if (colour.alpha) {
                 const currentPixel = i / 4;
                 const y =
-                    Math.floor(currentPixel / mapSize) * config.objectSize;
-                const x = (currentPixel % mapSize) * config.objectSize;
+                    Math.floor(currentPixel / mapSize) * objectConfig.size;
+                const x = (currentPixel % mapSize) * objectConfig.size;
 
                 ObjectIdentifier(colour, x, y);
             }
@@ -34,19 +34,19 @@ export default function SetObjectData(room) {
 }
 
 function ObjectIdentifier(colour, x, y) {
-    if (MatchesObject(colour, config.wall)) {
+    if (MatchesObject(colour, objectConfig.wall)) {
         objectData.walls.collection.push({ x, y });
-    } else if (MatchesObject(colour, config.player)) {
+    } else if (MatchesObject(colour, objectConfig.player)) {
         objectData.player = { ...objectData.player, x, y };
-    } else if (MatchesObject(colour, config.weapon)) {
+    } else if (MatchesObject(colour, objectConfig.weapon)) {
         objectData.weapon = { ...objectData.weapon, x, y };
-    } else if (MatchesObject(colour, config.treasure)) {
+    } else if (MatchesObject(colour, objectConfig.treasure)) {
         objectData.treasure.collection.push({
             x,
             y,
             pickedUp: false,
         });
-    } else if (MatchesObject(colour, config.enemy)) {
+    } else if (MatchesObject(colour, objectConfig.enemy)) {
         objectData.enemy.collection.push(
             new Enemy({
                 x,

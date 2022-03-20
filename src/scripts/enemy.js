@@ -1,4 +1,4 @@
-import config from './object-config.json' assert { type: 'json' };
+import { objectConfig } from './object.config.js';
 import { objectData } from './objectData.js';
 import {
     x_diff,
@@ -11,7 +11,7 @@ import { RenderEnemies } from './renderer.js';
 
 export class Enemy {
     constructor(enemyData) {
-        this.hp = config.enemy.start_hp;
+        this.hp = objectConfig.enemy.start_hp;
         this.y = enemyData.y;
         this.x = enemyData.x;
         this.prev = {};
@@ -40,7 +40,7 @@ export class Enemy {
             this.touchingPlayer();
 
             const axis = randomInt(0, 1) === 1 ? 'y' : 'x';
-            const movement = randomInt(-1, 1) * config.objectSize;
+            const movement = randomInt(-1, 1) * objectConfig.size;
             const x_dir = axis === 'x' ? movement : 0;
             const y_dir = axis === 'y' ? movement : 0;
 

@@ -1,5 +1,5 @@
-import config from './object-config.json' assert { type: 'json' };
-const size = config.objectSize;
+import { objectConfig } from './object.config.js';
+const size = objectConfig.size;
 const stage = 310;
 
 export const x_diff = (x, object) => {

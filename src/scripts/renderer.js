@@ -1,4 +1,4 @@
-import config from './object-config.json' assert { type: 'json' };
+import { objectConfig } from './object.config.js';
 import { objectData } from './objectData.js';
 
 export const bgLayer = document.getElementById('bg-layer').getContext('2d');
@@ -28,8 +28,8 @@ export function ClearSingular(object) {
     object.layer.clearRect(
         object.prev ? object.prev.x : object.x,
         object.prev ? object.prev.y : object.y,
-        config.objectSize,
-        config.objectSize
+        objectConfig.size,
+        objectConfig.size
     );
 }
 
@@ -41,8 +41,8 @@ function RenderNumerous(object) {
             object.layer.fillRect(
                 data.x,
                 data.y,
-                config.objectSize,
-                config.objectSize
+                objectConfig.size,
+                objectConfig.size
             );
         });
     };
@@ -85,7 +85,7 @@ function RenderTreasure() {
 }
 
 function EnemyHealthSource(health) {
-    const healthSections = config.enemy.start_hp / 3;
+    const healthSections = objectConfig.enemy.start_hp / 3;
     if (health >= healthSections * 3) {
         return objectData.enemy.src_full;
     } else if (health >= healthSections * 2) {
@@ -100,8 +100,8 @@ export function RenderEnemies() {
         objectData.enemy.layer.clearRect(
             enemy.prev ? enemy.prev.x : enemy.x,
             enemy.prev ? enemy.prev.y : enemy.y,
-            config.objectSize,
-            config.objectSize
+            objectConfig.size,
+            objectConfig.size
         );
         const image = new Image();
         image.onload = () => {
