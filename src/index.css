@@ -8,6 +8,17 @@ body {
     user-select: none;
 }
 
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 410px;
+    display: flex;
+    justify-content: center;
+}
+
 div#stage,
 div#screen {
     position: absolute;
@@ -43,31 +54,52 @@ canvas {
     position: absolute;
 }
 
-.container {
+.movement {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 97%;
+    left: 30%;
     transform: translate(-50%, -50%);
-    width: 310px;
-    height: 410px;
-    display: flex;
-    justify-content: center;
 }
 
-ul {
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-    display: flex;
+.actions {
     position: absolute;
-    top: 95.5%;
-    left: 50%;
+    top: 97%;
+    left: 70%;
     transform: translate(-50%, -50%);
+}
+
+#KeyW {
+    top: 0px;
+    left: 0px;
+}
+
+#KeyA {
+    top: 34px;
+    left: -34px;
+}
+
+#KeyS {
+    top: 68px;
+    left: 0px;
+}
+
+#KeyD {
+    top: 34px;
+    left: 34px;
+}
+
+#KeyK {
+    top: 0px;
+    left: 0px;
+}
+
+#KeyL {
+    top: 68px;
+    left: 34px;
 }
 
 .icon,
 button {
-    margin: 0px 5px;
     padding: 0px 5px 1px 5px;
     border: 1px solid #555555;
     background-color: #333333;
@@ -95,6 +127,7 @@ button:active {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;
+    margin: 0px 5px;
 }
 
 progress {

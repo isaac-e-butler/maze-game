@@ -24,26 +24,18 @@
                 <button id="play-btn">PLAY</button>
             </div>
             <progress id="collected" value="0" max="0"></progress>
-            <ul class="control-options">
-                <li title="move up">
-                    <p class="icon" id="KeyW">W</p>
-                </li>
-                <li title="move left">
-                    <p class="icon" id="KeyA">A</p>
-                </li>
-                <li title="move down">
-                    <p class="icon" id="KeyS">S</p>
-                </li>
-                <li title="move right">
-                    <p class="icon" id="KeyD">D</p>
-                </li>
-                <li title="attack">
-                    <p class="icon" id="KeyK">K</p>
-                </li>
-                <li title="pick up">
-                    <p class="icon" id="KeyL">L</p>
-                </li>
-            </ul>
+            <div class="control-options">
+                <div class="movement">
+                    <button title="move up" class="icon" id="KeyW">W</button>
+                    <button title="move left" class="icon" id="KeyA">A</button>
+                    <button title="move down" class="icon" id="KeyS">S</button>
+                    <button title="move right" class="icon" id="KeyD">D</button>
+                </div>
+                <div class="actions">
+                    <button title="attack" class="icon" id="KeyK">K</button>
+                    <button title="pick up" class="icon" id="KeyL">L</button>
+                </div>
+            </div>
         </div>
         <div class="hide-me">
             <canvas width="31" height="31" id="image-map"></canvas>
