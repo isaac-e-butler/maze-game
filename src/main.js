@@ -13,9 +13,8 @@ function Main() {
         if (!objectData.ready) {
             playBtn.onclick = () => {
                 Play();
-            };
-            playBtn.ontouchstart = () => {
-                Play();
+                document.getElementById('progress').setAttribute('max', 100);
+                document.getElementById('progress').setAttribute('value', 50);
             };
         } else {
             setTimeout(waitUntilLoaded);

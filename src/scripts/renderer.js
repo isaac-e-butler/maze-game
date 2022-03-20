@@ -9,7 +9,7 @@ export const playerLayer = document
     .getElementById('player-layer')
     .getContext('2d');
 const roomTitle = document.getElementById('room-title');
-const progressBar = document.getElementById('collected');
+const progressBar = document.getElementById('progress');
 const playBtn = document.getElementById('play-btn');
 const screen = document.getElementById('screen');
 const statusText = document.getElementById('status-text');
