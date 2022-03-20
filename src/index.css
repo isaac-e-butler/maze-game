@@ -56,14 +56,14 @@ canvas {
 
 .movement {
     position: absolute;
-    top: 97%;
+    top: 98%;
     left: 30%;
     transform: translate(-50%, -50%);
 }
 
 .actions {
     position: absolute;
-    top: 97%;
+    top: 98%;
     left: 70%;
     transform: translate(-50%, -50%);
 }
@@ -74,18 +74,18 @@ canvas {
 }
 
 #KeyA {
-    top: 34px;
-    left: -34px;
+    top: 36px;
+    left: -36px;
 }
 
 #KeyS {
-    top: 68px;
+    top: 70px;
     left: 0px;
 }
 
 #KeyD {
-    top: 34px;
-    left: 34px;
+    top: 36px;
+    left: 36px;
 }
 
 #KeyK {
@@ -94,13 +94,14 @@ canvas {
 }
 
 #KeyL {
-    top: 68px;
-    left: 34px;
+    top: 70px;
+    left: 36px;
 }
 
 .icon,
 button {
-    padding: 0px 5px 1px 5px;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0px 8px 1px 8px;
     border: 1px solid #555555;
     background-color: #333333;
     border-radius: 5px;
