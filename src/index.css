@@ -15,7 +15,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 310px;
-    height: 510px;
+    height: 540px;
     display: flex;
     justify-content: center;
 }
@@ -26,7 +26,7 @@ div#screen {
     background-color: black;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 40%;
+    top: 37%;
 }
 
 div#stage {
@@ -37,17 +37,6 @@ div#stage {
 div#screen {
     width: 320px;
     height: 320px;
-}
-
-button {
-    cursor: pointer;
-    color: white;
-    font-family: 'main';
-    font-size: 24px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 75%;
 }
 
 h3 {
@@ -66,82 +55,97 @@ canvas {
 
 .movement {
     position: absolute;
-    top: 80%;
+    top: 76.5%;
     left: 30%;
     transform: translate(-50%, -50%);
 }
 
 .actions {
     position: absolute;
-    top: 80%;
+    top: 76.5%;
     left: 70%;
     transform: translate(-50%, -50%);
 }
 
 #KeyW {
-    padding: 4px 12px 4px 12px;
-    top: 0px;
+    padding-top: 10px;
     left: 0px;
+    top: 0px;
 }
 
 #KeyA {
-    padding: 2px 10px 6px 14px;
-    top: 40px;
-    left: -40px;
+    padding-left: 12px;
+    padding-top: 4px;
+    left: -48px;
+    top: 48px;
 }
 
 #KeyS {
-    padding: 0px 12px 8px 12px;
-    top: 80px;
+    padding-bottom: 6px;
+    top: 96px;
     left: 0px;
 }
 
 #KeyD {
-    padding: 2px 14px 6px 10px;
-    top: 40px;
-    left: 40px;
+    padding-right: 12px;
+    padding-top: 4px;
+    left: 48px;
+    top: 48px;
 }
 
 #KeyK {
-    padding: 4px 12px 4px 12px;
-    top: 0px;
     left: 0px;
+    top: 0px;
 }
 
 #KeyL {
-    padding: 4px 12px 4px 12px;
-    top: 80px;
-    left: 40px;
+    left: 48px;
+    top: 96px;
 }
 
-.icon,
+.actions button {
+    padding: 0px;
+}
+
+button img {
+    transform: translate(-50%, -50%);
+    image-rendering: crisp-edges;
+    position: absolute;
+    width: 30px;
+    left: 50%;
+    top: 50%;
+}
+
+#play-btn {
+    padding: 4px 24px;
+}
+
+.control-options button {
+    width: 46px;
+    height: 46px;
+}
+
 button {
     -webkit-tap-highlight-color: transparent;
-    /* padding: 0px 8px 1px 8px; */
+    transform: translate(-50%, -50%);
     border: 1px solid #555555;
     background-color: #333333;
+    font-family: 'main';
+    position: absolute;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 24px;
+    color: white;
+    left: 50%;
+    top: 75%;
 }
 
-.icon,
-button {
-    -webkit-tap-highlight-color: transparent;
-    padding: 0px 8px 1px 8px;
-    border: 1px solid #555555;
-    background-color: #333333;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.icon:hover,
 button:hover {
     background-color: #555555;
     border-color: #777777;
 }
 
-.icon:active,
-.icon.pressed,
+button.pressed,
 button:active {
     background-color: #222222;
     border-color: #333333;
@@ -159,7 +163,7 @@ button:active {
 
 progress {
     position: absolute;
-    top: 73.5%;
+    top: 69%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 310px;
