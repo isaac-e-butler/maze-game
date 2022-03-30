@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'main';
-    src: url('./SyneMono-Regular.ttf');
+    src: url('./syne-mono-regular.ttf');
 }
 
 div#room-title::before,

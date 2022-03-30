@@ -1,6 +1,6 @@
 import { mazeConfig } from './config/maze.config.js';
-import { objectData } from './scripts/objectData.js';
-import SetObjectData from './scripts/setObjectData.js';
+import { objectData } from './scripts/object-data.js';
+import SetObjectData from './scripts/set-object-data.js';
 import RenderRoom, { ShowEndScreen } from './scripts/renderer.js';
 import { SpawnPlayer } from './scripts/player.js';
 import { randomInt } from './scripts/common.js';

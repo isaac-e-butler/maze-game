@@ -1,5 +1,5 @@
 import { objectConfig } from '../config/object.config.js';
-import { objectData } from './objectData.js';
+import { objectData } from './object-data.js';
 
 export const bgLayer = document.getElementById('bg-layer').getContext('2d');
 export const enemyLayer = document

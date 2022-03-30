@@ -12,7 +12,6 @@ these can be installed by visiting https://nodejs.org/en/
 ### Setup
 
 -   open the terminal/command-prompt
--   install the node modules using **_npm install_**
 -   write **_npm start_** in the directory containing **_index.js_**
 -   open web-browser at **_localhost:3000_**
 

@@ -1,5 +1,5 @@
 import { objectConfig } from '../config/object.config.js';
-import { objectData } from './objectData.js';
+import { objectData } from './object-data.js';
 import {
     ClearAllEnemies,
     ClearSingular,
