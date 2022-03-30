@@ -1,4 +1,4 @@
-import { objectConfig } from './object.config.js';
+import { objectConfig } from '../config/object.config.js';
 import { objectData } from './objectData.js';
 import {
     x_diff,

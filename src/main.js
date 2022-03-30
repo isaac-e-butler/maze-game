@@ -1,4 +1,4 @@
-import { mazeConfig } from './maze.config.js';
+import { mazeConfig } from './config/maze.config.js';
 import { objectData } from './scripts/objectData.js';
 import SetObjectData from './scripts/setObjectData.js';
 import RenderRoom, { ShowEndScreen } from './scripts/renderer.js';

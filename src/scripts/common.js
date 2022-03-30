@@ -1,4 +1,4 @@
-import { objectConfig } from './object.config.js';
+import { objectConfig } from '../config/object.config.js';
 const size = objectConfig.size;
 const stage = 310;
 

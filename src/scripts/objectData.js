@@ -1,4 +1,4 @@
-import { objectConfig } from './object.config.js';
+import { objectConfig } from '../config/object.config.js';
 import { bgLayer, enemyLayer, playerLayer } from './renderer.js';
 
 export const objectData = {

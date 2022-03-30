@@ -2,6 +2,11 @@ import * as http from 'http';
 import * as path from 'path';
 import * as fs from 'fs';
 const port = process.env.port || 3000;
+const logging = process.env.logging || true;
+
+const logToConsole = (message) => {
+    if (logging) console.log(message);
+};
 
 const extToType = {
     '.html': 'text/html',
@@ -21,17 +26,17 @@ const server = http.createServer((request, response) => {
     const ext = path.extname(filePath);
     const contentType = extToType.hasOwnProperty(ext) && extToType[ext];
 
-    console.info(`[i] - file path: ${filePath}`);
-    console.info(`[i] - content type: ${contentType}`);
+    logToConsole(`[i] - file path: ${filePath}`);
+    logToConsole(`[i] - content type: ${contentType}`);
 
     if (contentType) {
         response.writeHead(200, { 'Content-Type': contentType });
         const readStream = fs.createReadStream(filePath);
         readStream.pipe(response);
-        console.log(`[/] - successful\n`);
+        logToConsole(`[/] - successful\n`);
     } else {
-        console.error(`[x] - failed\n`);
-        console.warn(`[!] - missing content type for extension ${ext}\n`);
+        logToConsole(`[x] - failed\n`);
+        logToConsole(`[!] - missing content type for extension ${ext}\n`);
     }
 });
 
