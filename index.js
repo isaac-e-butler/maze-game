@@ -5,7 +5,7 @@ const port = process.env.port || 3000;
 const logging = process.env.logging || true;
 
 const logToConsole = (message) => {
-    if (logging) console.log(message);
+    if (logging !== 'false') console.log(message);
 };
 
 const extToType = {
@@ -41,7 +41,6 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(port, (error) => {
-    console.log(logging);
     if (error) {
         console.error(`[x] - ${error}\n`);
     } else {
