@@ -1,9 +1,7 @@
-# dependencies
+# folders
 /node_modules
 /documentation
 
 # misc
 .DS_Store
-
-# vscode
 .vscode/
