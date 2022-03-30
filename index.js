@@ -41,6 +41,7 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(port, (error) => {
+    console.log(logging);
     if (error) {
         console.error(`[x] - ${error}\n`);
     } else {
