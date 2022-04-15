@@ -1,47 +1,49 @@
-import { mazeConfig } from './config/maze.config.js';
+import setObjectData from './scripts/set-object-data.js';
 import { objectData } from './scripts/object-data.js';
-import SetObjectData from './scripts/set-object-data.js';
-import RenderRoom, { ShowEndScreen } from './scripts/renderer.js';
-import { SpawnPlayer } from './scripts/player.js';
-import { randomInt } from './scripts/common.js';
+import { mazeConfig } from './config/maze.config.js';
+import * as render from './scripts/renderer.js';
+import * as player from './scripts/player.js';
+import * as _ from './scripts/common.js';
 
 const playBtn = document.getElementById('play-btn');
 let interval;
 
-function Main() {
+function start() {
     const waitUntilLoaded = () => {
         if (!objectData.ready) {
             playBtn.onclick = () => {
-                Play();
+                play();
             };
         } else {
             setTimeout(waitUntilLoaded);
         }
     };
-    SetObjectData(mazeConfig.rooms[randomInt(0, mazeConfig.rooms.length - 1)]);
+    setObjectData(mazeConfig.rooms[_.randomInt(0, mazeConfig.rooms.length - 1)]);
     waitUntilLoaded();
 }
 
-function Update() {
+function update() {
     objectData.enemy.collection.forEach((enemy) => {
         enemy.move();
     });
+    render.enemies();
+
     if (objectData.won) {
-        ShowEndScreen('YOU WON!');
+        render.endScreen('YOU WON!');
         clearInterval(interval);
         playBtn.onclick = () => location.reload();
     }
     if (!objectData.player.alive) {
-        ShowEndScreen('YOU DIED!');
+        render.endScreen('YOU DIED!');
         clearInterval(interval);
         playBtn.onclick = () => location.reload();
     }
 }
 
-function Play() {
-    RenderRoom();
-    SpawnPlayer(objectData.player);
-    interval = setInterval(Update, 200);
+function play() {
+    render.room();
+    player.spawn();
+    interval = setInterval(update, 200);
 }
 
-Main();
+start();

@@ -9,4 +9,5 @@ export const mazeConfig = {
             src: 'images/rooms/corridor.png',
         },
     ],
+    stageSize: 310,
 };

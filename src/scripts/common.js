@@ -1,23 +1,33 @@
+import { mazeConfig } from '../config/maze.config.js';
 import { objectConfig } from '../config/object.config.js';
-const size = objectConfig.size;
-const stage = 310;
 
-export const x_diff = (x, object) => {
-    return x - object.x;
+// variables
+
+export const objectSize = objectConfig.objectSize;
+export const stageSize = mazeConfig.stageSize;
+
+// functions
+
+export const difference = (position, otherPosition) => {
+    return position - otherPosition;
 };
-export const y_diff = (y, object) => {
-    return y - object.y;
+
+export const isNextTo = (value) => {
+    return value >= -objectSize && value <= objectSize;
 };
-export const within = (value) => {
-    return value >= -size && value <= size;
+
+export const withinArea = (x, y, object) => {
+    return isNextTo(difference(x, object.x)) && isNextTo(difference(y, object.y));
 };
-export const restrictNegative = (value) => {
-    if (value < 0) return stage - size;
+
+export const isTouching = (x, y, object) => {
+    return difference(x, object.x) === 0 && difference(y, object.y) === 0;
+};
+
+export const restrict = (value) => {
+    if (value < 0) return stageSize - objectSize;
+    if (value >= stageSize) return 0;
     return value;
 };
-export const restrictPositive = (value) => {
-    if (value >= stage) return 0;
-    return value;
-};
-export const randomInt = (min, max) =>
-    Math.floor(Math.random() * (max - min + 1)) + min;
+
+export const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;

@@ -1,16 +1,19 @@
 import { objectConfig } from '../config/object.config.js';
 import { objectData } from './object-data.js';
-import { Enemy } from './enemy.js';
+import { enemyObject } from './enemy.js';
+import * as _ from './common.js';
 
-const imageMap = document.getElementById('image-map').getContext('2d');
-const mapSize = 31;
+export default function setObjectData(room) {
+    const mapImage = document.getElementById('map-image').getContext('2d');
+    const mapSize = 31;
 
-export default function SetObjectData(room) {
-    imageMap.clearRect(0, 0, mapSize, mapSize);
+    mapImage.clearRect(0, 0, mapSize, mapSize);
     const image = new Image();
+
     image.onload = () => {
-        imageMap.drawImage(image, 0, 0);
-        const { data } = imageMap.getImageData(0, 0, mapSize, mapSize);
+        mapImage.drawImage(image, 0, 0);
+        const { data } = mapImage.getImageData(0, 0, mapSize, mapSize);
+
         for (let i = 0; i < data.length; i += 4) {
             const colour = {
                 red: data[i],
@@ -18,45 +21,47 @@ export default function SetObjectData(room) {
                 blue: data[i + 2],
                 alpha: data[i + 3],
             };
-            if (colour.alpha) {
-                const currentPixel = i / 4;
-                const y =
-                    Math.floor(currentPixel / mapSize) * objectConfig.size;
-                const x = (currentPixel % mapSize) * objectConfig.size;
 
-                ObjectIdentifier(colour, x, y);
+            if (colour.alpha) {
+                const pixelIndex = i / 4;
+                const y = Math.floor(pixelIndex / mapSize) * _.objectSize;
+                const x = (pixelIndex % mapSize) * _.objectSize;
+                identifyObject(colour, x, y);
             }
         }
+
         objectData.ready = true;
     };
-    image.src = room.src;
+
     objectData.roomTitle = room.title;
+    image.src = room.src;
 }
 
-function ObjectIdentifier(colour, x, y) {
-    if (MatchesObject(colour, objectConfig.wall)) {
+function identifyObject(colour, x, y) {
+    if (sameColour(colour, objectConfig.wall)) {
         objectData.walls.collection.push({ x, y });
-    } else if (MatchesObject(colour, objectConfig.player)) {
+    } else if (sameColour(colour, objectConfig.player)) {
         objectData.player = { ...objectData.player, x, y };
-    } else if (MatchesObject(colour, objectConfig.weapon)) {
+    } else if (sameColour(colour, objectConfig.weapon)) {
         objectData.weapon = { ...objectData.weapon, x, y };
-    } else if (MatchesObject(colour, objectConfig.treasure)) {
+    } else if (sameColour(colour, objectConfig.treasure)) {
         objectData.treasure.collection.push({
             x,
             y,
-            pickedUp: false,
+            collected: false,
         });
-    } else if (MatchesObject(colour, objectConfig.enemy)) {
+    } else if (sameColour(colour, objectConfig.enemy)) {
         objectData.enemy.collection.push(
-            new Enemy({
+            new enemyObject({
                 x,
                 y,
+                hp: objectData.enemy.hp,
             })
         );
     }
 }
 
-const MatchesObject = (colour, object) =>
+const sameColour = (colour, object) =>
     colour.red === object.red &&
     colour.green === object.green &&
     colour.blue === object.blue;

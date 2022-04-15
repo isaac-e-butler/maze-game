@@ -1,58 +1,41 @@
-import { objectConfig } from '../config/object.config.js';
 import { objectData } from './object-data.js';
-import {
-    x_diff,
-    y_diff,
-    restrictNegative,
-    restrictPositive,
-    randomInt,
-} from './common.js';
-import { RenderEnemies } from './renderer.js';
+import * as _ from './common.js';
 
-export class Enemy {
-    constructor(enemyData) {
-        this.hp = objectConfig.enemy.start_hp;
-        this.y = enemyData.y;
-        this.x = enemyData.x;
-        this.prev = {};
-        this.alive = true;
+export class enemyObject {
+    constructor(data) {
+        this.x = data.x;
+        this.y = data.y;
+        this.hp = data.hp;
     }
 
     restrictMovement() {
-        this.x = restrictNegative(this.x);
-        this.y = restrictNegative(this.y);
-        this.x = restrictPositive(this.x);
-        this.y = restrictPositive(this.y);
+        this.x = _.restrict(this.x);
+        this.y = _.restrict(this.y);
     }
 
     touchingPlayer() {
-        if (
-            x_diff(this.x, objectData.player) === 0 &&
-            y_diff(this.y, objectData.player) === 0
-        ) {
+        if (_.isTouching(this.x, this.y, objectData.player.object)) {
             objectData.player.alive = false;
         }
     }
 
     move() {
-        this.alive = this.hp > 0;
-        if (this.alive) {
+        if (this.hp > 0) {
             this.touchingPlayer();
 
-            const axis = randomInt(0, 1) === 1 ? 'y' : 'x';
-            const movement = randomInt(-1, 1) * objectConfig.size;
+            const axis = _.randomInt(0, 1) === 1 ? 'y' : 'x';
+            const movement = _.randomInt(-1, 1) * _.objectSize;
             const x_dir = axis === 'x' ? movement : 0;
             const y_dir = axis === 'y' ? movement : 0;
 
             const blocked = objectData.walls.collection.some(({ x, y }) => {
                 return x === this.x + x_dir && y === this.y + y_dir;
             });
+
             if (!blocked) {
-                this.prev = { x: this.x, y: this.y };
                 this.x += x_dir;
                 this.y += y_dir;
                 this.restrictMovement();
-                RenderEnemies();
             }
         }
     }

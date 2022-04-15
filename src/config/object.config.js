@@ -15,7 +15,7 @@ export const objectConfig = {
         red: 255,
         green: 0,
         blue: 0,
-        start_hp: 3,
+        hp: 3,
         src_full: 'images/objects/enemy_full.png',
         src_half: 'images/objects/enemy_half.png',
         src_low: 'images/objects/enemy_low.png',
@@ -32,5 +32,5 @@ export const objectConfig = {
         blue: 0,
         src: 'images/objects/treasure.png',
     },
-    size: 10,
+    objectSize: 10,
 };

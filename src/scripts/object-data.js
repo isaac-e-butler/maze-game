@@ -1,43 +1,41 @@
-import { objectConfig } from '../config/object.config.js';
 import { bgLayer, enemyLayer, playerLayer } from './renderer.js';
+import { objectConfig } from '../config/object.config.js';
 
 export const objectData = {
-    ready: false,
-    won: false,
     roomTitle: '',
     walls: {
         src: objectConfig.wall.src,
         layer: bgLayer,
         collection: [],
     },
-    player: {
-        src: objectConfig.player.src,
-        layer: playerLayer,
-        x: undefined,
-        y: undefined,
-        prev: undefined,
-        hasWeapon: false,
-        object: undefined,
-        alive: false,
-    },
     enemy: {
         src_full: objectConfig.enemy.src_full,
         src_half: objectConfig.enemy.src_half,
         src_low: objectConfig.enemy.src_low,
-        start_hp: objectConfig.enemy.start_hp,
+        hp: objectConfig.enemy.hp,
         layer: enemyLayer,
         collection: [],
     },
-    weapon: {
-        src: objectConfig.weapon.src,
+    player: {
+        src: objectConfig.player.src,
         layer: playerLayer,
+        object: undefined,
+        hasWeapon: false,
+        alive: false,
         x: undefined,
         y: undefined,
-        pickedUp: false,
+    },
+    weapon: {
+        src: objectConfig.weapon.src,
+        layer: bgLayer,
+        x: undefined,
+        y: undefined,
     },
     treasure: {
         src: objectConfig.treasure.src,
         layer: bgLayer,
         collection: [],
     },
+    ready: false,
+    won: false,
 };
