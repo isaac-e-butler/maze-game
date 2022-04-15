@@ -12,38 +12,38 @@ const pressed = ' pressed';
 
 export function spawn() {
     objectData.player.object = new Player();
-    const InputListener = (event) => objectData.player.object.handleInput(event);
+    const inputListener = (event) => objectData.player.object.handleInput(event);
 
     const keyDown = 'keydown';
     const keyUp = 'keyup';
 
-    document.addEventListener(keyDown, InputListener);
-    document.addEventListener(keyUp, InputListener);
-    KeyW.onmousedown = () => InputListener({ type: keyDown, code: 'KeyW' });
-    KeyW.onmouseup = () => InputListener({ type: keyUp, code: 'KeyW' });
+    document.addEventListener(keyDown, inputListener);
+    document.addEventListener(keyUp, inputListener);
+    KeyW.onmousedown = () => inputListener({ type: keyDown, code: 'KeyW' });
+    KeyW.onmouseup = () => inputListener({ type: keyUp, code: 'KeyW' });
 
-    KeyA.onmousedown = () => InputListener({ type: keyDown, code: 'KeyA' });
-    KeyA.onmouseup = () => InputListener({ type: keyUp, code: 'KeyA' });
+    KeyA.onmousedown = () => inputListener({ type: keyDown, code: 'KeyA' });
+    KeyA.onmouseup = () => inputListener({ type: keyUp, code: 'KeyA' });
 
-    KeyS.onmousedown = () => InputListener({ type: keyDown, code: 'KeyS' });
-    KeyS.onmouseup = () => InputListener({ type: keyUp, code: 'KeyS' });
+    KeyS.onmousedown = () => inputListener({ type: keyDown, code: 'KeyS' });
+    KeyS.onmouseup = () => inputListener({ type: keyUp, code: 'KeyS' });
 
-    KeyD.onmousedown = () => InputListener({ type: keyDown, code: 'KeyD' });
-    KeyD.onmouseup = () => InputListener({ type: keyUp, code: 'KeyD' });
+    KeyD.onmousedown = () => inputListener({ type: keyDown, code: 'KeyD' });
+    KeyD.onmouseup = () => inputListener({ type: keyUp, code: 'KeyD' });
 
-    KeyK.onmousedown = () => InputListener({ type: keyDown, code: 'KeyK' });
-    KeyK.onmouseup = () => InputListener({ type: keyUp, code: 'KeyK' });
+    KeyK.onmousedown = () => inputListener({ type: keyDown, code: 'KeyK' });
+    KeyK.onmouseup = () => inputListener({ type: keyUp, code: 'KeyK' });
 
-    KeyL.onmousedown = () => InputListener({ type: keyDown, code: 'KeyL' });
-    KeyL.onmouseup = () => InputListener({ type: keyUp, code: 'KeyL' });
+    KeyL.onmousedown = () => inputListener({ type: keyDown, code: 'KeyL' });
+    KeyL.onmouseup = () => inputListener({ type: keyUp, code: 'KeyL' });
 }
 
 class Player {
     constructor() {
+        objectData.player.alive = true;
         this.y = objectData.player.y;
         this.x = objectData.player.x;
         this.readyForInput = true;
-        objectData.player.alive = true;
     }
 
     handleInput(event) {
@@ -106,7 +106,7 @@ class Player {
     }
 
     showInput(key, keyDown, keyUp) {
-        if (keyDown) {
+        if (keyDown && !key.hasAttribute('disabled')) {
             if (!key.className.includes(pressed)) key.className += pressed;
         }
         if (keyUp) {
@@ -121,6 +121,7 @@ class Player {
         if (canCollectWeapon) {
             objectData.player.hasWeapon = true;
             render.singularClear(objectData.weapon);
+            KeyK.removeAttribute('disabled');
         }
 
         objectData.treasure.collection = objectData.treasure.collection

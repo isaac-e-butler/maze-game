@@ -3,8 +3,7 @@
   "jest": {
     "testEnvironment": "jest-environment-jsdom-sixteen"
   },
-  "version": "1.0",
-  "description": "",
+  "version": "1.1",
   "main": "index.js",
   "dependencies": {
     "jest": "^27.5.1",
