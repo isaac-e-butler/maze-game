@@ -9,8 +9,8 @@ export const mazeConfig = {
             src: 'images/rooms/corridor.png',
         },
         {
-            title: 'RING',
-            src: 'images/rooms/ring.png',
+            title: 'CIRCULAR',
+            src: 'images/rooms/circular.png',
         },
     ],
     stageSize: 310,
