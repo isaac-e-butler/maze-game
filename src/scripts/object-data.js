@@ -1,11 +1,11 @@
-import { bgLayer, enemyLayer, playerLayer } from './renderer.js';
+import { miscLayer, enemyLayer, playerLayer } from './renderer.js';
 import { objectConfig } from '../config/object.config.js';
 
 export const objectData = {
     roomTitle: '',
     walls: {
         src: objectConfig.wall.src,
-        layer: bgLayer,
+        layer: miscLayer,
         collection: [],
     },
     enemy: {
@@ -27,13 +27,13 @@ export const objectData = {
     },
     weapon: {
         src: objectConfig.weapon.src,
-        layer: bgLayer,
+        layer: miscLayer,
         x: undefined,
         y: undefined,
     },
     treasure: {
         src: objectConfig.treasure.src,
-        layer: bgLayer,
+        layer: miscLayer,
         collection: [],
     },
     ready: false,

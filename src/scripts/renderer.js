@@ -2,7 +2,7 @@ import { objectConfig } from '../config/object.config.js';
 import { objectData } from './object-data.js';
 import * as _ from './common.js';
 
-export const bgLayer = document.getElementById('bg-layer').getContext('2d');
+export const miscLayer = document.getElementById('misc-layer').getContext('2d');
 export const enemyLayer = document.getElementById('enemy-layer').getContext('2d');
 export const playerLayer = document.getElementById('player-layer').getContext('2d');
 
