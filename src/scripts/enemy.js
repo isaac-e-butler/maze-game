@@ -8,12 +8,7 @@ export class enemyObject {
         this.hp = data.hp;
     }
 
-    restrictMovement() {
-        this.x = _.restrict(this.x);
-        this.y = _.restrict(this.y);
-    }
-
-    touchingPlayer() {
+    isTouchingPlayer() {
         if (_.isTouching(this.x, this.y, objectData.player.object)) {
             objectData.player.alive = false;
         }
@@ -21,7 +16,7 @@ export class enemyObject {
 
     move() {
         if (this.hp > 0) {
-            this.touchingPlayer();
+            this.isTouchingPlayer();
 
             const axis = _.randomInt(0, 1) === 1 ? 'y' : 'x';
             const movement = _.randomInt(-1, 1) * _.objectSize;
@@ -35,7 +30,8 @@ export class enemyObject {
             if (!blocked) {
                 this.x += x_dir;
                 this.y += y_dir;
-                this.restrictMovement();
+                this.x = _.restrict(this.x);
+                this.y = _.restrict(this.y);
             }
         }
     }

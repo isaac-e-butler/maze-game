@@ -1,41 +1,13 @@
 import { objectData } from './object-data.js';
 import * as render from './renderer.js';
+import * as input from './input.js';
 import * as _ from './common.js';
 
-const KeyW = document.getElementById('KeyW');
-const KeyA = document.getElementById('KeyA');
-const KeyS = document.getElementById('KeyS');
-const KeyD = document.getElementById('KeyD');
-const KeyK = document.getElementById('KeyK');
-const KeyL = document.getElementById('KeyL');
 const pressed = ' pressed';
 
 export function spawn() {
     objectData.player.object = new Player();
-    const inputListener = (event) => objectData.player.object.handleInput(event);
-
-    const keyDown = 'keydown';
-    const keyUp = 'keyup';
-
-    document.addEventListener(keyDown, inputListener);
-    document.addEventListener(keyUp, inputListener);
-    KeyW.onmousedown = () => inputListener({ type: keyDown, code: 'KeyW' });
-    KeyW.onmouseup = () => inputListener({ type: keyUp, code: 'KeyW' });
-
-    KeyA.onmousedown = () => inputListener({ type: keyDown, code: 'KeyA' });
-    KeyA.onmouseup = () => inputListener({ type: keyUp, code: 'KeyA' });
-
-    KeyS.onmousedown = () => inputListener({ type: keyDown, code: 'KeyS' });
-    KeyS.onmouseup = () => inputListener({ type: keyUp, code: 'KeyS' });
-
-    KeyD.onmousedown = () => inputListener({ type: keyDown, code: 'KeyD' });
-    KeyD.onmouseup = () => inputListener({ type: keyUp, code: 'KeyD' });
-
-    KeyK.onmousedown = () => inputListener({ type: keyDown, code: 'KeyK' });
-    KeyK.onmouseup = () => inputListener({ type: keyUp, code: 'KeyK' });
-
-    KeyL.onmousedown = () => inputListener({ type: keyDown, code: 'KeyL' });
-    KeyL.onmouseup = () => inputListener({ type: keyUp, code: 'KeyL' });
+    input.setup();
 }
 
 class Player {
@@ -46,57 +18,43 @@ class Player {
         this.readyForInput = true;
     }
 
-    handleInput(event) {
-        const keyDown = event.type === 'keydown';
-        const keyUp = event.type === 'keyup';
-        switch (event.code) {
-            case 'KeyW':
-            case 'ArrowUp':
-                if (keyDown) {
+    handleInput(inputEvent) {
+        const keyDown = inputEvent.type === 'keydown';
+        const keyUp = inputEvent.type === 'keyup';
+        if (keyDown) {
+            switch (inputEvent.code) {
+                case 'KeyW':
+                case 'ArrowUp':
                     this.movement(0, -_.objectSize);
-                }
-                this.showInput(KeyW, keyDown, keyUp);
-                break;
-            case 'KeyA':
-            case 'ArrowLeft':
-                if (keyDown) {
+                    break;
+                case 'KeyA':
+                case 'ArrowLeft':
                     this.movement(-_.objectSize, 0);
-                }
-                this.showInput(KeyA, keyDown, keyUp);
-                break;
-            case 'KeyS':
-            case 'ArrowDown':
-                if (keyDown) {
+                    break;
+                case 'KeyS':
+                case 'ArrowDown':
                     this.movement(0, _.objectSize);
-                }
-                this.showInput(KeyS, keyDown, keyUp);
-                break;
-            case 'KeyD':
-            case 'ArrowRight':
-                if (keyDown) {
+                    break;
+                case 'KeyD':
+                case 'ArrowRight':
                     this.movement(_.objectSize, 0);
-                }
-                this.showInput(KeyD, keyDown, keyUp);
-                break;
-            case 'KeyK':
-                if (keyDown && objectData.player.hasWeapon) {
+                    break;
+                case 'KeyK':
                     this.attack();
-                }
-                this.showInput(KeyK, keyDown, keyUp);
-                break;
-            case 'KeyL':
-                if (keyDown) {
+                    break;
+                case 'KeyL':
                     this.interact();
-                }
-                this.showInput(KeyL, keyDown, keyUp);
-                break;
-            default:
-                break;
+                    break;
+                default:
+                    break;
+            }
         }
-        this.limitMovement(keyDown);
+        if (!inputEvent.btn) inputEvent.btn = input.getBtn(inputEvent.code);
+        this.showInput(inputEvent.btn, keyDown, keyUp);
+        this.limitInput(keyDown);
     }
 
-    limitMovement(keyDown) {
+    limitInput(keyDown) {
         if (this.readyForInput && keyDown) {
             this.readyForInput = false;
             setTimeout(() => {
@@ -105,23 +63,27 @@ class Player {
         }
     }
 
-    showInput(key, keyDown, keyUp) {
-        if (keyDown && !key.hasAttribute('disabled')) {
-            if (!key.className.includes(pressed)) key.className += pressed;
-        }
-        if (keyUp) {
-            if (key.className.includes(pressed))
-                key.className = key.className.replace(pressed, '');
+    showInput(btn, keyDown, keyUp) {
+        if (btn) {
+            if (keyDown && !btn.hasAttribute('disabled')) {
+                if (!btn.className.includes(pressed)) btn.className += pressed;
+            }
+            if (keyUp) {
+                if (btn.className.includes(pressed))
+                    btn.className = btn.className.replace(pressed, '');
+            }
         }
     }
 
     interact() {
-        const canCollectWeapon = _.withinArea(this.x, this.y, objectData.weapon);
+        if (!objectData.player.hasWeapon) {
+            const canCollectWeapon = _.withinArea(this.x, this.y, objectData.weapon);
 
-        if (canCollectWeapon) {
-            objectData.player.hasWeapon = true;
-            render.singularClear(objectData.weapon);
-            KeyK.removeAttribute('disabled');
+            if (canCollectWeapon) {
+                objectData.player.hasWeapon = true;
+                render.singularClear(objectData.weapon);
+                input.getBtn('KeyK').removeAttribute('disabled');
+            }
         }
 
         objectData.treasure.collection = objectData.treasure.collection
@@ -147,28 +109,30 @@ class Player {
     }
 
     attack() {
-        let shouldRender = false;
+        if (objectData.player.hasWeapon) {
+            let shouldRender = false;
 
-        objectData.enemy.collection = objectData.enemy.collection
-            .map((enemy) => {
-                const canAttack = _.withinArea(this.x, this.y, enemy);
+            objectData.enemy.collection = objectData.enemy.collection
+                .map((enemy) => {
+                    const canAttack = _.withinArea(this.x, this.y, enemy);
 
-                if (canAttack) {
-                    shouldRender = true;
-                    enemy.hp -= 1;
-                }
+                    if (canAttack) {
+                        shouldRender = true;
+                        enemy.hp -= 1;
+                    }
 
-                return enemy;
-            })
-            .filter((enemy) => {
-                const dead = enemy.hp <= 0;
-                return !dead;
-            });
+                    return enemy;
+                })
+                .filter((enemy) => {
+                    const dead = enemy.hp <= 0;
+                    return !dead;
+                });
 
-        if (shouldRender) render.enemies(); // lazy approach
+            if (shouldRender) render.enemies(); // lazy approach
+        }
     }
 
-    touchingEnemy() {
+    isTouchingEnemy() {
         objectData.enemy.collection.map((enemy) => {
             if (_.isTouching(this.x, this.y, enemy)) {
                 objectData.player.alive = false;
@@ -176,23 +140,20 @@ class Player {
         });
     }
 
-    restrictMovement() {
-        this.x = _.restrict(this.x);
-        this.y = _.restrict(this.y);
-    }
-
     movement(x_dir, y_dir) {
-        this.touchingEnemy();
+        this.isTouchingEnemy();
         const inputReady = this.readyForInput && objectData.player.alive;
         if (inputReady) {
             const blocked = objectData.walls.collection.some(({ x, y }) => {
                 return x === this.x + x_dir && y === this.y + y_dir;
             });
+
             if (!blocked) {
                 render.singularClear({ ...objectData.player, x: this.x, y: this.y });
                 this.x += x_dir;
                 this.y += y_dir;
-                this.restrictMovement();
+                this.x = _.restrict(this.x);
+                this.y = _.restrict(this.y);
                 render.singular({ ...objectData.player, x: this.x, y: this.y });
             }
         }
