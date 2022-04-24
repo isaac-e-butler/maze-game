@@ -8,6 +8,15 @@ import * as _ from './scripts/common.js';
 const playBtn = document.getElementById('play-btn');
 let interval;
 
+function beforeStart() {
+    if (
+        window.location.protocol === 'http:' &&
+        window.location.hostname !== 'localhost'
+    ) {
+        window.location.href = window.location.href.replace('http:', 'https:');
+    }
+}
+
 function start() {
     const waitUntilLoaded = () => {
         if (!objectData.ready) {
@@ -46,4 +55,5 @@ function play() {
     interval = setInterval(update, 200);
 }
 
+beforeStart();
 start();
