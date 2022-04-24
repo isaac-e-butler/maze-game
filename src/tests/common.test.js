@@ -1,43 +1,59 @@
-import * as common from '../scripts/common';
+import * as _ from '../scripts/common.js';
 
 describe('common functions', () => {
-    const diffCases = [
-        ['position equals to object position', 10, 10, 0],
+    it.each([
+        ['position equal to object position', 10, 10, 0],
         ['position negative to object position', -10, 0, -10],
         ['position positive to object position', 0, -10, 10],
-    ];
-    it.each(diffCases)('x_diff: %s', (testName, num1, num2, expected) => {
-        const result = common.x_diff(num1, { x: num2 });
+    ])('difference: %s', (testName, position1, position2, expected) => {
+        const result = _.difference(position1, position2);
         expect(result).toEqual(expected);
     });
-    it.each(diffCases)('y_diff: %s', (testName, num1, num2, expected) => {
-        const result = common.y_diff(num1, { y: num2 });
-        expect(result).toEqual(expected);
-    });
+
     it.each([
         ['outside as negative', -11, false],
         ['outside as positive', 11, false],
         ['inside as negative', -10, true],
         ['inside as positive', 10, true],
         ['inside as zero', 0, true],
-    ])('within: is %s', (testName, value, expected) => {
-        const result = common.within(value);
+    ])('isNextTo: is %s', (testName, value, expected) => {
+        const result = _.isNextTo(value);
         expect(result).toBe(expected);
     });
+
     it.each([
-        ['stage size minus object size', -10, 300],
-        ['the original value - 0', 0, 0],
-        ['the original value - 310', 300, 300],
-    ])('restrictNegative: returns %s', (testName, value, expected) => {
-        const result = common.restrictNegative(value);
+        ['object position is left & above', { x: 90, y: 90 }, true],
+        ['object has equal position', { x: 100, y: 100 }, true],
+        ['object position is right & below', { x: 110, y: 110 }, true],
+        ['object position X is too left', { x: 80, y: 90 }, false],
+        ['object position Y is too high', { x: 90, y: 80 }, false],
+        ['object position X is too right', { x: 120, y: 110 }, false],
+        ['object position Y is too low', { x: 110, y: 120 }, false],
+        ['object position is missing', {}, false],
+    ])('withinArea: %s', (testName, object, expected) => {
+        const result = _.withinArea(100, 100, object);
         expect(result).toBe(expected);
     });
+
     it.each([
-        ['the start value of stage - 0', 310, 0],
-        ['the original value - 0', 0, 0],
-        ['the original value - 310', 300, 300],
-    ])('restrictPositive: returns %s', (testName, value, expected) => {
-        const result = common.restrictPositive(value);
+        ['object has equal position', { x: 100, y: 100 }, true],
+        ['object position X is too left', { x: 90, y: 100 }, false],
+        ['object position Y is too high', { x: 100, y: 90 }, false],
+        ['object position X is too right', { x: 110, y: 100 }, false],
+        ['object position Y is too low', { x: 100, y: 110 }, false],
+        ['object position is missing', {}, false],
+    ])('isTouching: %s', (testName, object, expected) => {
+        const result = _.isTouching(100, 100, object);
+        expect(result).toBe(expected);
+    });
+
+    it.each([
+        ['stage size - object size', -10, 300],
+        ['start value of stage', 310, 0],
+        ['original value - 0', 0, 0],
+        ['original value - 300', 300, 300],
+    ])('restrict: returns %s', (testName, value, expected) => {
+        const result = _.restrict(value);
         expect(result).toBe(expected);
     });
 });
