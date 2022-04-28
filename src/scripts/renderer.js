@@ -2,9 +2,9 @@ import { objectConfig } from '../config/object.config.js';
 import { objectData } from './object-data.js';
 import * as _ from './common.js';
 
-export const miscLayer = document.getElementById('misc-layer').getContext('2d');
-export const enemyLayer = document.getElementById('enemy-layer').getContext('2d');
-export const playerLayer = document.getElementById('player-layer').getContext('2d');
+export const miscLayer = _.getContext2D('misc-layer');
+export const enemyLayer = _.getContext2D('enemy-layer');
+export const playerLayer = _.getContext2D('player-layer');
 
 const roomTitle = document.getElementById('room-title');
 const progressBar = document.getElementById('progress');

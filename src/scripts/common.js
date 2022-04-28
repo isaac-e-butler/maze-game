@@ -30,4 +30,8 @@ export const restrict = (value) => {
     return value;
 };
 
+export const getContext2D = (id) => {
+    if (document.getElementById(id)) return document.getElementById(id).getContext('2d');
+};
+
 export const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
