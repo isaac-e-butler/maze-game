@@ -11,7 +11,7 @@ const protocol = () => {
     ) {
         window.location.href = window.location.href.replace('http:', 'https:');
     } else if (window.location.port === '3001') {
-        mazeConfig.rooms = [...mazeConfig.rooms, ...mazeConfig.cypressRooms];
+        mazeConfig.rooms = [...mazeConfig.cypressRooms, ...mazeConfig.rooms];
     }
 };
 

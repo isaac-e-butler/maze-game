@@ -1,4 +1,4 @@
-import * as _ from '../scripts/common.js';
+import * as _ from '../source/scripts/common.js';
 
 describe('common functions', () => {
     it.each([
