@@ -1,0 +1,32 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "cypress/globals": true
+    },
+    "plugins": [
+        "cypress",
+        "chai-friendly"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:cypress/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            "error",
+            4,
+            {"SwitchCase": 1}
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-unused-expressions": 0,
+        "chai-friendly/no-unused-expressions": 2
+    }
+}

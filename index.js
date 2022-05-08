@@ -19,7 +19,7 @@ const extToType = {
 
 const server = http.createServer((request, response) => {
     const filePath = path.join(
-        './src/',
+        './source/',
         request.url === '/' ? 'index.html' : request.url
     );
 

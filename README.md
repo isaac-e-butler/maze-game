@@ -4,14 +4,14 @@
 
 Dear Player,
 
-You have one goal. Collect all the treasure. Once you collect them all, you win.
+You have one goal. Collect all the treasures. Once you collect them all, you win.
 However, it isn't that simple, there are enemies lurking around each corner.
 They can kill you in one strike. Not to worry, there’s a sword you can collect
 to destroy this threat. They’re tough, they take 3 hits. Don’t fear though,
-they may be tough but their intelligence is low. They move randomly, they even
-try to walk through walls sometimes… quite silly really… The passages within the
-maze aren’t any ordinary passages, they loop around to the other side. Use
-this to your advantage, weave around the maze avoiding the enemies.
+they may be tough but their intelligence is low. They move randomly with the
+inability to sense your presence. The passages within the maze aren’t any ordinary
+passages, they loop around to the other side. Use this to your advantage,
+weave around the enemies within the maze.
 
 -X-X-X- WARNING -X-X-X-
 
@@ -36,4 +36,4 @@ these can be installed by visiting https://nodejs.org/en/
 
 ### Alternative
 
--   you can play the game at http://maze.ghostrunners25.com/
+-   play the game at https://maze.ghostrunners25.com/

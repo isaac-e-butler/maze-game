@@ -1,5 +1,5 @@
-import { mazeConfig } from '../config/maze.config.js';
 import { objectConfig } from '../config/object.config.js';
+import { mazeConfig } from '../config/maze.config.js';
 
 // variables
 

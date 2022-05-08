@@ -13,5 +13,11 @@ export const mazeConfig = {
             src: 'images/rooms/circular.png',
         },
     ],
+    cypressRooms: [
+        {
+            title: 'PLAYER MOVEMENT',
+            src: 'images/cypress-rooms/player-only.png',
+        },
+    ],
     stageSize: 310,
 };

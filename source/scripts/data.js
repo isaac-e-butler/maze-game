@@ -1,12 +1,22 @@
 import { miscLayer, enemyLayer, playerLayer } from './renderer.js';
 import { objectConfig } from '../config/object.config.js';
 
-export const objectData = {
+export const status = {
+    powering: 0,
+    selecting: 1,
+    playing: 2,
+};
+
+export const data = {
     roomTitle: '',
-    walls: {
-        src: objectConfig.wall.src,
-        layer: miscLayer,
-        collection: [],
+    player: {
+        src: objectConfig.player.src,
+        layer: playerLayer,
+        object: undefined,
+        hasWeapon: false,
+        alive: false,
+        x: undefined,
+        y: undefined,
     },
     enemy: {
         src_full: objectConfig.enemy.src_full,
@@ -16,14 +26,10 @@ export const objectData = {
         layer: enemyLayer,
         collection: [],
     },
-    player: {
-        src: objectConfig.player.src,
-        layer: playerLayer,
-        object: undefined,
-        hasWeapon: false,
-        alive: false,
-        x: undefined,
-        y: undefined,
+    walls: {
+        src: objectConfig.wall.src,
+        layer: miscLayer,
+        collection: [],
     },
     weapon: {
         src: objectConfig.weapon.src,
@@ -36,6 +42,7 @@ export const objectData = {
         layer: miscLayer,
         collection: [],
     },
-    ready: false,
+    interval: undefined,
+    status: undefined,
     won: false,
 };

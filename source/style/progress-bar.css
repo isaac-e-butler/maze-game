@@ -1,0 +1,18 @@
+progress {
+    position: absolute;
+    top: 69%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 5px;
+    border-radius: 0px;
+    border: white solid 1px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #000000;
+}
+
+progress::-webkit-progress-value {
+    background-color: #ddcf5c;
+}

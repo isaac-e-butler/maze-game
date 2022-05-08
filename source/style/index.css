@@ -1,0 +1,62 @@
+@import url('./room-title.css');
+@import url('./progress-bar.css');
+@import url('./control-buttons.css');
+@font-face {
+    font-family: 'main';
+    src: url('./font/syne-mono-regular.ttf');
+}
+
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #222222;
+    font-family: 'main';
+    color: white;
+    user-select: none;
+    touch-action: none;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 540px;
+    display: flex;
+    justify-content: center;
+}
+
+div#stage,
+div#screen {
+    position: absolute;
+    background-color: black;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 37%;
+}
+
+div#stage {
+    width: 310px;
+    height: 310px;
+}
+
+div#screen {
+    width: 320px;
+    height: 320px;
+}
+
+canvas {
+    position: absolute;
+}
+
+.hide-me {
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    margin: 0px 5px;
+}

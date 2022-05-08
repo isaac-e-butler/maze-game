@@ -16,8 +16,7 @@
         />
         <title>MAZE GAME</title>
         <link rel="icon" type="image/x-icon" href="images/icons/icon.png" />
-        <link rel="stylesheet" type="text/css" href="index.css" />
-        <link rel="stylesheet" type="text/css" href="font/font.css" />
+        <link rel="stylesheet" type="text/css" href="style/index.css" />
         <script type="module" src="main.js"></script>
     </head>
     <body>
@@ -28,32 +27,28 @@
                 <canvas width="310" height="310" id="enemy-layer"></canvas>
                 <canvas width="310" height="310" id="player-layer"></canvas>
             </div>
-            <div id="screen">
-                <h3 id="status-text"></h3>
-                <button id="play-btn">PLAY</button>
-            </div>
             <progress id="progress" value="0" max="0"></progress>
-            <div class="control-options">
+            <div class="controls">
                 <div class="movement">
-                    <button title="UP ARROW | W" id="KeyW">
+                    <button title="W" id="up" tabindex="-1" disabled>
                         <span class="arrow up"></span>
                     </button>
-                    <button title="LEFT ARROW | A" id="KeyA">
+                    <button title="A" id="left" tabindex="-1" disabled>
                         <span class="arrow left"></span>
                     </button>
-                    <button title="DOWN ARROW | S" id="KeyS">
+                    <button title="S" id="down" tabindex="-1" disabled>
                         <span class="arrow down"></span>
                     </button>
-                    <button title="RIGHT ARROW | D" id="KeyD">
+                    <button title="D" id="right" tabindex="-1" disabled>
                         <span class="arrow right"></span>
                     </button>
                 </div>
                 <div class="actions">
-                    <button title="ATTACK -> K" id="KeyK" disabled>
-                        <img src="images/icons/weapon.icon.png" />
+                    <button title="K" id="action1" tabindex="-1" disabled>
+                        <img src="" />
                     </button>
-                    <button title="PICK UP -> L" id="KeyL">
-                        <img src="images/icons/treasure.icon.png" />
+                    <button title="L" id="action2" tabindex="-1" disabled>
+                        <img src="" />
                     </button>
                 </div>
             </div>
