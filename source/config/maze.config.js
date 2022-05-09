@@ -12,6 +12,10 @@ export const mazeConfig = {
             title: 'CIRCULAR',
             src: 'images/rooms/circular.png',
         },
+        {
+            title: 'PASSAGE',
+            src: 'images/rooms/passage.png',
+        },
     ],
     cypressRooms: [
         {
