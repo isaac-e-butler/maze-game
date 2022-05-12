@@ -1,0 +1,13 @@
+name: cypress-tests
+
+on: [pull_request]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: cypress run
+        uses: cypress-io/github-action@v2
