@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
 
-export const onStartUp = () => {
+import * as _ from './common.steps.js';
+
+export const shouldLoad = () => {
     cy.visit('../../../source/index.html');
 
-    titleShouldBe('MAZE GAME');
+    _.roomTitleShouldBe('MAZE GAME');
 
     cy.get('.stage').children().should('have.length', 3);
     canvasShouldExist('misc-layer');
@@ -11,19 +13,11 @@ export const onStartUp = () => {
     canvasShouldExist('player-layer');
     canvasShouldExist('map-image', 'hide-me', '31');
 
-    progressShouldBe(0, 0);
-};
+    _.progressShouldBe(0, 0);
 
-export const titleShouldBe = (text) => {
-    cy.get('div#room-title')
-        .should('contain.text', text)
-        .and('have.attr', 'roomTitle', text);
-};
+    cy.get('.movement').children().should('have.length', 4);
 
-export const progressShouldBe = (value, max) => {
-    cy.get('progress#progress')
-        .should('have.attr', 'value', value)
-        .and('have.attr', 'max', max);
+    cy.get('.actions').children().should('have.length', 2);
 };
 
 const canvasShouldExist = (id, className = '', size = '310') => {

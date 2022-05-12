@@ -1,7 +1,8 @@
-import * as main from '../steps/main.step.js';
+import * as startup from '../steps/startup.steps.js';
+// import * as _ from '../steps/common.steps.js';
 
 before(() => {
-    main.onStartUp();
+    startup.shouldLoad();
 });
 
 describe('player', () => {
