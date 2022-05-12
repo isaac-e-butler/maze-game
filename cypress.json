@@ -1,5 +1,6 @@
 {
-    "testFiles": "**/*.feature.js",
+    "projectId": "itf8en",
+    "testFiles": "**/*.spec.js",
     "fixturesFolder": false,
     "supportFile": false,
     "viewportHeight": 660,

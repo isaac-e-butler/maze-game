@@ -19,8 +19,8 @@ export const mazeConfig = {
     ],
     cypressRooms: [
         {
-            title: 'PLAYER MOVEMENT',
-            src: 'images/cypress-rooms/player-only.png',
+            title: 'PLAYER TEST',
+            src: 'images/cypress-rooms/player-test.png',
         },
     ],
     stageSize: 310,
