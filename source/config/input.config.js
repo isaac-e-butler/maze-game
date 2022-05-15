@@ -1,5 +1,5 @@
 export const inputConfig = {
-    keys: {
+    keyCode: {
         up: 'KeyW',
         left: 'KeyA',
         down: 'KeyS',
@@ -7,7 +7,7 @@ export const inputConfig = {
         action1: 'KeyK',
         action2: 'KeyL',
     },
-    buttons: {
+    action: {
         start: {
             title: 'START',
             src: 'images/icons/start.icon.png',

@@ -9,7 +9,7 @@ import * as input from './input.js';
 let index = 0;
 
 export const start = () => {
-    renderer.updateBtn(input.getBtn('action2'), inputConfig.buttons.play);
+    renderer.updateBtn(input.getBtn('action2'), inputConfig.action.play);
     renderer.updateBtnMultiple([
         { btn: input.getBtn('up'), enable: false },
         { btn: input.getBtn('left'), enable: true },
@@ -50,19 +50,19 @@ const select = () => {
 export const handleInput = (event) => {
     if (!data.player.object) {
         switch (event.code) {
-            case inputConfig.keys.left:
+            case inputConfig.keyCode.left:
                 show(-1);
                 break;
-            case inputConfig.keys.right:
+            case inputConfig.keyCode.right:
                 show(1);
                 break;
-            case inputConfig.keys.action2:
+            case inputConfig.keyCode.action2:
                 select();
                 break;
             default:
                 break;
         }
-    } else if (event.code === inputConfig.keys.action2) {
+    } else if (event.code === inputConfig.keyCode.action2) {
         data.player.object = undefined;
         start();
     }

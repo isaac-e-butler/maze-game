@@ -5,8 +5,8 @@ import * as input from './input.js';
 import * as _ from './common.js';
 
 export const spawn = () => {
-    renderer.updateBtn(input.getBtn('action1'), inputConfig.buttons.attack, false);
-    renderer.updateBtn(input.getBtn('action2'), inputConfig.buttons.pickup);
+    renderer.updateBtn(input.getBtn('action1'), inputConfig.action.attack, false);
+    renderer.updateBtn(input.getBtn('action2'), inputConfig.action.pickup);
     renderer.updateBtnMultiple([
         { btn: input.getBtn('up'), enable: true },
         { btn: input.getBtn('left'), enable: true },
@@ -18,8 +18,8 @@ export const spawn = () => {
 };
 
 export const despawn = () => {
-    renderer.updateBtn(input.getBtn('action1'), inputConfig.buttons.unassigned, false);
-    renderer.updateBtn(input.getBtn('action2'), inputConfig.buttons.reload);
+    renderer.updateBtn(input.getBtn('action1'), inputConfig.action.unassigned, false);
+    renderer.updateBtn(input.getBtn('action2'), inputConfig.action.reload);
     renderer.updateBtnMultiple([
         { btn: input.getBtn('up'), enable: false },
         { btn: input.getBtn('left'), enable: false },
@@ -40,22 +40,22 @@ class Player {
 
     handleInput(event) {
         switch (event.code) {
-            case inputConfig.keys.up:
+            case inputConfig.keyCode.up:
                 this.movement(0, -_.objectSize);
                 break;
-            case inputConfig.keys.left:
+            case inputConfig.keyCode.left:
                 this.movement(-_.objectSize, 0);
                 break;
-            case inputConfig.keys.down:
+            case inputConfig.keyCode.down:
                 this.movement(0, _.objectSize);
                 break;
-            case inputConfig.keys.right:
+            case inputConfig.keyCode.right:
                 this.movement(_.objectSize, 0);
                 break;
-            case inputConfig.keys.action1:
+            case inputConfig.keyCode.action1:
                 this.attack();
                 break;
-            case inputConfig.keys.action2:
+            case inputConfig.keyCode.action2:
                 this.interact();
                 break;
             default:
