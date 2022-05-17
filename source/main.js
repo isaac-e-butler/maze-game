@@ -18,8 +18,8 @@ const protocol = () => {
 const start = () => {
     input.setup();
     data.status = status.powering;
-    renderer.updateBtn(input.getBtn('action1'), inputConfig.buttons.unassigned, false);
-    renderer.updateBtn(input.getBtn('action2'), inputConfig.buttons.start);
+    renderer.updateBtn(input.getBtn('action1'), inputConfig.action.unassigned, false);
+    renderer.updateBtn(input.getBtn('action2'), inputConfig.action.start);
 };
 
 protocol();

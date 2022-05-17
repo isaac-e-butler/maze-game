@@ -3,12 +3,12 @@ import * as roomSelect from './room-select.js';
 import { data, status } from './data.js';
 
 export const list = [
-    { id: 'up', code: inputConfig.keys.up, btn: undefined },
-    { id: 'left', code: inputConfig.keys.left, btn: undefined },
-    { id: 'down', code: inputConfig.keys.down, btn: undefined },
-    { id: 'right', code: inputConfig.keys.right, btn: undefined },
-    { id: 'action1', code: inputConfig.keys.action1, btn: undefined },
-    { id: 'action2', code: inputConfig.keys.action2, btn: undefined },
+    { id: 'up', code: inputConfig.keyCode.up, btn: undefined },
+    { id: 'left', code: inputConfig.keyCode.left, btn: undefined },
+    { id: 'down', code: inputConfig.keyCode.down, btn: undefined },
+    { id: 'right', code: inputConfig.keyCode.right, btn: undefined },
+    { id: 'action1', code: inputConfig.keyCode.action1, btn: undefined },
+    { id: 'action2', code: inputConfig.keyCode.action2, btn: undefined },
 ];
 
 let inputReady = true;
@@ -48,7 +48,7 @@ const inputListener = (event) => {
     if (keyDown && inputReady) {
         switch (data.status) {
             case status.powering:
-                if (event.code === inputConfig.keys.action2) {
+                if (event.code === inputConfig.keyCode.action2) {
                     data.status = status.selecting;
                     roomSelect.start();
                 }
