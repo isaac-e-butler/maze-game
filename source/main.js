@@ -4,13 +4,8 @@ import * as renderer from './scripts/renderer.js';
 import { inputConfig } from './config/input.config.js';
 import { mazeConfig } from './config/maze.config.js';
 
-const protocol = () => {
-    if (
-        window.location.protocol === 'http:' &&
-        window.location.hostname === 'maze.ghostrunners25.com'
-    ) {
-        window.location.href = window.location.href.replace('http:', 'https:');
-    } else if (window.location.port === '3001') {
+const configureTestRooms = () => {
+    if (window.location.port === '3000' && window.location.hostname === 'localhost') {
         mazeConfig.rooms = [...mazeConfig.cypressRooms, ...mazeConfig.rooms];
     }
 };
@@ -22,5 +17,5 @@ const start = () => {
     renderer.updateBtn(input.getBtn('action2'), inputConfig.action.start);
 };
 
-protocol();
+configureTestRooms();
 start();

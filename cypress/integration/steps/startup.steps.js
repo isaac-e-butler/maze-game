@@ -11,7 +11,7 @@ const keyCode = {
 };
 
 export const shouldLoad = () => {
-    cy.visit('../../../source/index.html');
+    cy.visit('../../../index.html');
 
     _.roomTitleToBe('MAZE GAME');
 

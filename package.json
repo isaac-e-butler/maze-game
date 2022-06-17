@@ -1,6 +1,6 @@
 {
     "name": "maze-game",
-    "version": "1.4.4",
+    "version": "1.4.5",
     "main": "index.js",
     "jest": {
         "testRegex": "((\\.|/*.)(test))\\.js?$",
@@ -17,7 +17,6 @@
         "prettier": "^2.5.1"
     },
     "scripts": {
-        "start": "node ./index.js",
         "jest-tests": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
         "cypress-tests": "cypress open"
     },
