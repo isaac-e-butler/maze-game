@@ -17,23 +17,3 @@ weave around the enemies within the maze.
 
 Don’t forget to look at the other side before entering a passage!
 Good luck on your adventure.
-
-### Environment
-
-last run using:
-
--   node v16.14.0
--   npm v8.5.3
-
-these can be installed by visiting https://nodejs.org/en/
-
-### Setup
-
--   download repository as .ZIP and extract
--   open the terminal within the extracted file's directory
--   write **_npm start_** at the directory containing **_index.js_**
--   open web-browser at **_localhost:3000_**
-
-### Alternative
-
--   play the game at https://maze.ghostrunners25.com/
