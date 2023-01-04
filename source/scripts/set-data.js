@@ -4,7 +4,9 @@ import { enemyObject } from './enemy.js';
 import { data } from './data.js';
 import * as _ from './common.js';
 
-const mapImage = document.getElementById('map-image').getContext('2d');
+const mapImage = document
+    .getElementById('map-image')
+    .getContext('2d', { willReadFrequently: true });
 const mapSize = 31;
 
 export const setData = (room) => {
