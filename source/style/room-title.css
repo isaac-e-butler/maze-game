@@ -2,8 +2,8 @@ div#room-title::before,
 div#room-title::after {
     content: attr(roomTitle);
     position: absolute;
-    left: 0px;
     opacity: 0.8;
+	left: 0px;
 }
 
 div#room-title::before {
@@ -13,9 +13,9 @@ div#room-title::before {
 
 div#room-title {
     animation: flicker 2s linear infinite;
+	user-select: none;
     font-size: 32px;
     opacity: 0.8;
-    user-select: none;
 }
 
 div#room-title::after {
@@ -24,12 +24,10 @@ div#room-title::after {
 }
 
 @keyframes flicker {
-    8%,
-    74% {
+    8%, 74% {
         transform: translate(1px, 0px) skew(-1deg);
     }
-    16%,
-    70% {
+    16%, 70% {
         transform: translate(-1px, 0px) skew(1deg);
     }
     72% {
@@ -39,12 +37,10 @@ div#room-title::after {
 }
 
 @keyframes flickerTop {
-    8%,
-    74% {
+    8%, 74% {
         transform: translate(1px, -1px);
     }
-    16%,
-    70% {
+    16%, 70% {
         transform: translate(-1px, 1px);
     }
     72% {
@@ -54,12 +50,10 @@ div#room-title::after {
 }
 
 @keyframes flickerBottom {
-    8%,
-    74% {
+    8%, 74% {
         transform: translate(-1px, 1px);
     }
-    16%,
-    70% {
+    16%, 70% {
         transform: translate(1px, -1px);
     }
     72% {

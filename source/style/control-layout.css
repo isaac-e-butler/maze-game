@@ -1,0 +1,59 @@
+.movement, .actions {
+	transform: translate(-50%, -50%);
+    position: absolute;
+    top: 80%;
+}
+
+.movement {
+    left: 25%;
+}
+
+.actions {
+    left: 75%;
+}
+
+button#right {
+    left: calc(var(--button-size) * 1);
+    top: calc(var(--button-size) * 1);
+}
+
+button#right img {
+	transform: translate(-50%, -50%) rotate(90deg);
+}
+
+button#left {
+    left: calc(var(--button-size) * -1);
+    top: calc(var(--button-size) * 1);
+}
+
+button#left img {
+	transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+button#up {
+    left: calc(var(--button-size) * 0);
+    top: calc(var(--button-size) * 0);
+}
+
+button#up img {
+	transform: translate(-50%, -50%) rotate(0deg);
+}
+
+button#down {
+    top: calc(var(--button-size) * 2);
+    left: calc(var(--button-size) * 0);
+}
+
+button#down img {
+	transform: translate(-50%, -50%) rotate(180deg);
+}
+
+#action1 {
+    left: calc(var(--button-size) * 0);
+    top: calc(var(--button-size) * 0);
+}
+
+#action2 {
+    left: calc(var(--button-size) * 1);
+    top: calc(var(--button-size) * 2);
+}

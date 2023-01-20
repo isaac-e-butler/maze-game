@@ -1,26 +1,26 @@
 {
-    "name": "maze-game",
-    "version": "1.4.6",
-    "main": "index.js",
-    "jest": {
-        "testRegex": "((\\.|/*.)(test))\\.js?$",
-        "testEnvironment": "jsdom",
-        "transform": {}
-    },
-    "devDependencies": {
-        "cypress": "^9.6.0",
-        "eslint": "^8.14.0",
-        "eslint-plugin-chai-friendly": "^0.7.2",
-        "eslint-plugin-cypress": "^2.12.1",
-        "jest": "^27.5.1",
-        "jest-environment-jsdom-sixteen": "^2.0.0",
-        "prettier": "^2.5.1"
-    },
-    "scripts": {
-        "jest-tests": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-        "cypress-tests": "cypress open"
-    },
-    "type": "module",
-    "author": "GhostRunners25 - Isaac Butler",
-    "license": "ISC"
+	"name": "maze-game",
+	"version": "1.4.6",
+	"main": "index.js",
+	"jest": {
+		"testRegex": "((\\.|/*.)(test))\\.js?$",
+		"testEnvironment": "jsdom",
+		"transform": {}
+	},
+	"devDependencies": {
+		"cypress": "^9.6.0",
+		"eslint": "^8.14.0",
+		"eslint-plugin-chai-friendly": "^0.7.2",
+		"eslint-plugin-cypress": "^2.12.1",
+		"jest": "^27.5.1",
+		"jest-environment-jsdom-sixteen": "^2.0.0",
+		"prettier": "^2.5.1"
+	},
+	"scripts": {
+		"jest-tests": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+		"cypress-tests": "cypress open"
+	},
+	"type": "module",
+	"author": "GhostRunners25 - Isaac Butler",
+	"license": "ISC"
 }

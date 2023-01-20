@@ -1,12 +1,12 @@
 progress {
+	transform: translate(-50%, -50%);
+	border: white solid 1px;
     position: absolute;
-    top: 69%;
+	border-radius: 0px;
+	width: 310px;
+	height: 5px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 310px;
-    height: 5px;
-    border-radius: 0px;
-    border: white solid 1px;
+	top: 69%;
 }
 
 progress::-webkit-progress-bar {
