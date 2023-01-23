@@ -1,6 +1,7 @@
 button img {
 	width: calc(var(--button-size) - 10px);
 	transform: translate(-50%, -50%);
+	transition: ease 0.2s;
     position: absolute;
 }
 
@@ -11,7 +12,7 @@ button img {
     position: absolute;
     cursor: pointer;
     
-    border: 3px solid rgb(200 200 200);
+    
     border-radius: 15px;
     
     height: var(--button-size);
@@ -22,14 +23,16 @@ button img {
 }
 
 .controls button {
-    transform: translate(-50%, -50%);
-	background-color: rgb(147 147 147);
+	border: 3px solid rgb(227 227 227);
+	background-color: rgb(74 74 74);
+	transform: translate(-50%, -50%);
     transform-style: preserve-3d;
 }
 
 .controls button::before {
     transform: translateZ(-1px) translate(-50%, -20%);
-    background-color: rgb(180 180 180);
+    background-color: rgb(174 174 174);
+	border: 3px transparent;
     content: '';
 }
 
@@ -62,6 +65,10 @@ button img {
 .controls button:disabled {
     transform: translate(-50%, -20%);
     pointer-events: none;
+}
+
+.controls button:disabled img {
+	filter: invert();
 }
 
 .controls button:disabled::before {
