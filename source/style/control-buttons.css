@@ -1,7 +1,7 @@
 button img {
 	width: calc(var(--button-size) - 10px);
 	transform: translate(-50%, -50%);
-	transition: ease 0.2s;
+	transition: ease-out 0.2s;
     position: absolute;
 }
 
@@ -19,7 +19,7 @@ button img {
     width: var(--button-size);
 	padding: 0px;
 
-    transition: ease 0.2s;
+    transition: ease 0.15s;
 }
 
 .controls button {
@@ -72,7 +72,7 @@ button img {
 }
 
 .controls button:disabled::before {
-    transform: translateZ(-1px) translate(-50%, -50%) ;
+    transform: translateZ(-1px) translate(-50%, -50%);
 }
 
 /* #endregion */
