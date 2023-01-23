@@ -43,6 +43,7 @@ div.stage {
 }
 
 canvas {
+	image-rendering: pixelated;
     position: absolute;
 }
 
