@@ -68,7 +68,7 @@ button img {
 }
 
 .controls button:disabled img {
-	filter: invert();
+	filter: brightness(0.2);
 }
 
 .controls button:disabled::before {
