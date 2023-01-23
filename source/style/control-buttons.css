@@ -32,7 +32,7 @@ button img {
 .controls button::before {
     transform: translateZ(-1px) translate(-50%, -20%);
     background-color: rgb(174 174 174);
-	border: 3px transparent;
+	border: 3px rgb(174 174 174);
     content: '';
 }
 
