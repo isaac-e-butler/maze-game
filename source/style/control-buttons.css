@@ -7,19 +7,15 @@ button img {
 
 .controls button,
 .controls button::before {
-	box-sizing: border-box;
-    outline: transparent;
-    position: absolute;
-    cursor: pointer;
-    
-    
-    border-radius: 15px;
-    
     height: var(--button-size);
     width: var(--button-size);
+	transition: ease 0.15s;
+	box-sizing: border-box;
+    outline: transparent;
+	border-radius: 15px;
+    position: absolute;
+    cursor: pointer;
 	padding: 0px;
-
-    transition: ease 0.15s;
 }
 
 .controls button {
@@ -67,12 +63,12 @@ button img {
     pointer-events: none;
 }
 
-.controls button:disabled img {
-	filter: brightness(0.2);
-}
-
 .controls button:disabled::before {
     transform: translateZ(-1px) translate(-50%, -50%);
+}
+
+.controls button:disabled img {
+	filter: brightness(0.2);
 }
 
 /* #endregion */

@@ -1,15 +1,11 @@
 /// <reference types="cypress" />
 
 export const roomTitleToBe = (text) => {
-    cy.get('div#room-title')
-        .should('contain.text', text)
-        .and('have.attr', 'roomTitle', text);
+    cy.get('div#maze-title').should('contain.text', text).and('have.attr', 'maze-title', text);
 };
 
 export const progressToBe = (value, max) => {
-    cy.get('progress#progress')
-        .should('have.attr', 'value', value)
-        .and('have.attr', 'max', max);
+    cy.get('progress#progress').should('have.attr', 'value', value).and('have.attr', 'max', max);
 };
 
 export const btnToBeEnabled = (id) => {

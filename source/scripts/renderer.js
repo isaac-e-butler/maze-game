@@ -6,7 +6,7 @@ import * as _ from './common.js';
 export const miscLayer = _.getContext2D('misc-layer');
 export const enemyLayer = _.getContext2D('enemy-layer');
 export const playerLayer = _.getContext2D('player-layer');
-const roomTitle = document.getElementById('room-title');
+const roomTitle = document.getElementById('maze-title');
 const progressBar = document.getElementById('progress');
 
 export const singular = (object) => {
@@ -73,7 +73,7 @@ export const updateBtnMultiple = (objects) => {
 
 export const updateRoomTitle = (newTitle) => {
     roomTitle.innerHTML = newTitle;
-    roomTitle.setAttribute('roomTitle', newTitle);
+    roomTitle.setAttribute('maze-title', newTitle);
 };
 
 export const incProgress = () => {

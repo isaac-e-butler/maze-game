@@ -1,4 +1,4 @@
-@import url('./room-title.css');
+@import url('./maze-title.css');
 @import url('./progress-bar.css');
 @import url('./control-layout.css');
 @import url('./control-buttons.css');
@@ -21,25 +21,19 @@ html, body {
     margin: 0px;
 }
 
-.container {
-	transform: translate(-50%, -50%);
-	justify-content: center;
+.container, .hide-me {
+	transform: translate(-50%, -75%);
     position: absolute;
-    display: flex;
-    height: 620px;
 	width: 310px;
     left: 50%;
     top: 50%;
 }
 
-div.stage {
-	transform: translate(-50%, -50%);
+.stage {
+	transform: translateY(0px);
 	background-color: black;
-    position: absolute;
 	height: 310px;
 	width: 310px;
-    left: 50%;
-    top: 37%;
 }
 
 canvas {
@@ -48,11 +42,8 @@ canvas {
 }
 
 .hide-me {
-	transform: translate(-50%, -50%);
     visibility: hidden;
-    position: absolute;
 	z-index: -1;
+	width: auto;
 	margin: 0px;
-	left: 50%;
-    top: 50%;
 }

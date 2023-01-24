@@ -1,14 +1,13 @@
-.movement, .actions {
-    position: absolute;
-    top: 80%;
+.controls {
+    transform: translateY(60px);
 }
 
 .movement {
-    left: 25%;
+    transform: translateX(25%);
 }
 
 .actions {
-    left: 75%;
+    transform: translateX(75%);
 }
 
 button#right {

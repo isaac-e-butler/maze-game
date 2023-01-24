@@ -1,27 +1,35 @@
-div#room-title::before,
-div#room-title::after {
-    content: attr(roomTitle);
+#maze-title::before,
+#maze-title::after {
+    content: attr(maze-title);
     position: absolute;
     opacity: 0.8;
 	left: 0px;
 }
 
-div#room-title::before {
-    animation: flickerTop 1.5s linear infinite;
+#maze-title::before {
+    animation: flickerUpper 1.5s linear infinite;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
 }
 
-div#room-title {
+#maze-title::after {
+    animation: flickerLower 2.5s linear infinite;
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+}
+
+#maze-title {
     animation: flicker 2s linear infinite;
+	margin: 0px 0px 10px 0px;
 	user-select: none;
     font-size: 32px;
     opacity: 0.8;
 }
 
-div#room-title::after {
-    animation: flickerBottom 2.5s linear infinite;
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+.title-container {
+	justify-content: center;
+	display: flex;
 }
+
+/* #region animations */
 
 @keyframes flicker {
     8%, 74% {
@@ -36,7 +44,7 @@ div#room-title::after {
     }
 }
 
-@keyframes flickerTop {
+@keyframes flickerUpper {
     8%, 74% {
         transform: translate(1px, -1px);
     }
@@ -49,7 +57,7 @@ div#room-title::after {
     }
 }
 
-@keyframes flickerBottom {
+@keyframes flickerLower {
     8%, 74% {
         transform: translate(-1px, 1px);
     }
@@ -61,3 +69,5 @@ div#room-title::after {
         opacity: 1;
     }
 }
+
+/* #endregion */
