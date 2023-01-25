@@ -5,8 +5,7 @@ button img {
     position: absolute;
 }
 
-.controls button,
-.controls button::before {
+button, button::before {
     height: var(--button-size);
     width: var(--button-size);
 	transition: ease 0.15s;
@@ -18,7 +17,7 @@ button img {
 	padding: 0px;
 }
 
-.controls button {
+button {
 	border: 3px solid var(--outside-highlight-color);
 	background-color: var(--inside-color);
 	transform: translate(-50%, -50%);
@@ -26,7 +25,7 @@ button img {
     transform-style: preserve-3d;
 }
 
-.controls button::before {
+button::before {
     transform: translateZ(-1px) translate(-50%, -20%);
     background-color: var(--outside-color);
 	border: 3px var(--outside-color);
@@ -35,40 +34,38 @@ button img {
 
 /* #region hover */
 
-.controls button:hover {
+button:hover {
     transform: translate(-50%, -45%);
 }
 
-.controls button:hover::before {
+button:hover::before {
     transform: translateZ(-1px) translate(-50%, -25%);
 }
 
 /* #endregion */
 /* #region clicked */
 
-.controls button:active,
-.controls button.pressed {
+button:active, button.pressed {
     transform: translate(-50%, -20%);
 }
 
-.controls button:active::before,
-.controls button.pressed::before {
+button:active::before, button.pressed::before {
     transform: translateZ(-1px) translate(-50%, -50%);
 }
 
 /* #endregion */
 /* #region disabled */
 
-.controls button:disabled {
+button:disabled {
     transform: translate(-50%, -20%);
     pointer-events: none;
 }
 
-.controls button:disabled::before {
+button:disabled::before {
     transform: translateZ(-1px) translate(-50%, -50%);
 }
 
-.controls button:disabled img {
+button:disabled img {
 	filter: brightness(0.2);
 }
 

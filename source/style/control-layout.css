@@ -1,18 +1,12 @@
 .controls {
-    transform: translateY(60px);
-}
-
-.movement {
-    transform: translateX(25%);
-}
-
-.actions {
-    transform: translateX(75%);
+	transform: translateX(calc((310px - (var(--button-size) * 6)) / 2));
+	width: calc(var(--button-size) * 6);
+	position: relative;
 }
 
 button#right {
-    left: calc(var(--button-size) * 1);
-    top: calc(var(--button-size) * 1);
+    left: calc(var(--button-size) * 2.5);
+    top: calc(var(--button-size) * 1.5);
 }
 
 button#right img {
@@ -20,8 +14,8 @@ button#right img {
 }
 
 button#left {
-    left: calc(var(--button-size) * -1);
-    top: calc(var(--button-size) * 1);
+	left: calc(var(--button-size) * 0.5);
+    top: calc(var(--button-size) * 1.5);
 }
 
 button#left img {
@@ -29,8 +23,8 @@ button#left img {
 }
 
 button#up {
-    left: calc(var(--button-size) * 0);
-    top: calc(var(--button-size) * 0);
+    left: calc(var(--button-size) * 1.5);
+    top: calc(var(--button-size) * 0.5);
 }
 
 button#up img {
@@ -38,8 +32,8 @@ button#up img {
 }
 
 button#down {
-    top: calc(var(--button-size) * 2);
-    left: calc(var(--button-size) * 0);
+    top: calc(var(--button-size) * 2.5);
+    left: calc(var(--button-size) * 1.5);
 }
 
 button#down img {
@@ -47,11 +41,11 @@ button#down img {
 }
 
 #action1 {
-    left: calc(var(--button-size) * 0);
-    top: calc(var(--button-size) * 0);
+    left: calc(var(--button-size) * 4.5);
+    top: calc(var(--button-size) * 0.5);
 }
 
 #action2 {
-    left: calc(var(--button-size) * 1);
-    top: calc(var(--button-size) * 2);
+    left: calc(var(--button-size) * 5.5);
+    top: calc(var(--button-size) * 2.5);
 }
