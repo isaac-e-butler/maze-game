@@ -33,6 +33,7 @@ export const despawn = () => {
 class Player {
     constructor() {
         data.player.hasWeapon = false;
+        data.player.collected = 0;
         data.player.alive = true;
         this.y = data.player.y;
         this.x = data.player.x;
@@ -75,7 +76,7 @@ class Player {
         }
 
         data.treasure.collection = data.treasure.collection
-            .map((treasure) => {
+            .map(treasure => {
                 const canCollectTreasure = _.withinArea(this.x, this.y, treasure);
 
                 if (canCollectTreasure) {
@@ -83,17 +84,15 @@ class Player {
                         ...treasure,
                         layer: data.treasure.layer,
                     });
-                    renderer.incProgress();
+                    data.player.collected += 1;
                     treasure.collected = true;
                 }
 
                 return treasure;
             })
-            .filter((treasure) => {
-                return !treasure.collected;
-            });
+            .filter(treasure => !treasure.collected);
 
-        data.won = data.treasure.collection.length === 0;
+        renderer.progress();
     }
 
     attack() {
@@ -101,7 +100,7 @@ class Player {
             let shouldRender = false;
 
             data.enemy.collection = data.enemy.collection
-                .map((enemy) => {
+                .map(enemy => {
                     const canAttack = _.withinArea(this.x, this.y, enemy);
 
                     if (canAttack) {
@@ -111,7 +110,7 @@ class Player {
 
                     return enemy;
                 })
-                .filter((enemy) => {
+                .filter(enemy => {
                     const dead = enemy.hp <= 0;
                     return !dead;
                 });
@@ -121,7 +120,7 @@ class Player {
     }
 
     isTouchingEnemy() {
-        data.enemy.collection.map((enemy) => {
+        data.enemy.collection.map(enemy => {
             if (_.isTouching(this.x, this.y, enemy)) {
                 data.player.alive = false;
             }

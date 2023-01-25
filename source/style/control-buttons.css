@@ -19,16 +19,17 @@ button img {
 }
 
 .controls button {
-	border: 3px solid rgb(227 227 227);
-	background-color: rgb(74 74 74);
+	border: 3px solid var(--outside-highlight-color);
+	background-color: var(--inside-color);
 	transform: translate(-50%, -50%);
+    box-shadow: var(--box-shadow);
     transform-style: preserve-3d;
 }
 
 .controls button::before {
     transform: translateZ(-1px) translate(-50%, -20%);
-    background-color: rgb(174 174 174);
-	border: 3px rgb(174 174 174);
+    background-color: var(--outside-color);
+	border: 3px var(--outside-color);
     content: '';
 }
 

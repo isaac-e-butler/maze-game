@@ -14,6 +14,7 @@ export const data = {
         layer: playerLayer,
         object: undefined,
         hasWeapon: false,
+        collected: 0,
         alive: false,
         x: undefined,
         y: undefined,

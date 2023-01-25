@@ -1,16 +1,31 @@
-progress {
-	border: white solid 2px;
+#progress-bar {
+	border: 3px solid var(--outside-highlight-color);
+	box-shadow: var(--box-shadow);
+	transform-style: preserve-3d;
 	margin-top: 15px;
+	height: 25px;
 	width: 310px;
-	height: 15px;
 }
 
-progress::-webkit-progress-bar {
-    background-color: #000000;
+#progress-value {
+	background-color: var(--inside-color);
+	transform: translateZ(-1px);
+	height: 100%;
+	width: 100%;
 }
 
-progress::-webkit-progress-value {
-    background-color: #ddcf5c;
+#progress-value::before {
+	width: calc(var(--progress-width, 0) * 1%);
+	max-width: 100%;
+	min-width: 0%;
+	
+	background-color: #ddcf5c;
+	display: block;
+	height: 100%;
+	content: '';
 }
 
-/* counter-set <-- look into */
+#progress-bar, #progress-value, #progress-value::before {
+	box-sizing: border-box;
+	border-radius: 15px;
+}

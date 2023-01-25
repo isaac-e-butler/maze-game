@@ -4,12 +4,10 @@ import { enemyObject } from './enemy.js';
 import { data } from './data.js';
 import * as _ from './common.js';
 
-const mapImage = document
-    .getElementById('map-image')
-    .getContext('2d', { willReadFrequently: true });
+const mapImage = document.getElementById('map-image').getContext('2d', { willReadFrequently: true });
 const mapSize = 31;
 
-export const setData = (room) => {
+export const setData = room => {
     mapImage.clearRect(0, 0, mapSize, mapSize);
     const image = new Image();
     clear();
@@ -75,6 +73,4 @@ const clear = () => {
 };
 
 const sameColour = (colour, object) =>
-    colour.red === object.red &&
-    colour.green === object.green &&
-    colour.blue === object.blue;
+    colour.red === object.red && colour.green === object.green && colour.blue === object.blue;

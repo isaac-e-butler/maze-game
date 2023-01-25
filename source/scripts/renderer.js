@@ -7,9 +7,9 @@ export const miscLayer = _.getContext2D('misc-layer');
 export const enemyLayer = _.getContext2D('enemy-layer');
 export const playerLayer = _.getContext2D('player-layer');
 const roomTitle = document.getElementById('maze-title');
-const progressBar = document.getElementById('progress');
+const progressValue = document.getElementById('progress-value');
 
-export const singular = (object) => {
+export const singular = object => {
     const image = new Image();
     image.onload = () => {
         object.layer.drawImage(image, object.x, object.y);
@@ -17,22 +17,22 @@ export const singular = (object) => {
     image.src = object.src;
 };
 
-const numerous = (object) => {
+const numerous = object => {
     const image = new Image();
     image.onload = () => {
         object.layer.fillStyle = object.layer.createPattern(image, 'repeat');
-        object.collection.forEach((data) => {
+        object.collection.forEach(data => {
             object.layer.fillRect(data.x, data.y, _.objectSize, _.objectSize);
         });
     };
     image.src = object.src;
 };
 
-export const clearSingular = (object) => {
+export const clearSingular = object => {
     object.layer.clearRect(object.x, object.y, _.objectSize, _.objectSize);
 };
 
-const getEnemyImageSource = (health) => {
+const getEnemyImageSource = health => {
     const healthSection = objectConfig.enemy.hp / 3;
 
     if (health >= healthSection * 3) return data.enemy.src_full;
@@ -42,7 +42,7 @@ const getEnemyImageSource = (health) => {
 
 export const enemies = () => {
     data.enemy.layer.clearRect(0, 0, _.stageSize, _.stageSize);
-    data.enemy.collection.forEach((enemy) => {
+    data.enemy.collection.forEach(enemy => {
         const image = new Image();
         image.onload = () => {
             data.enemy.layer.drawImage(image, enemy.x, enemy.y);
@@ -65,19 +65,21 @@ export const updateBtn = (btn, update, enable = true) => {
     enabled(btn, enable);
 };
 
-export const updateBtnMultiple = (objects) => {
-    objects.map((object) => {
+export const updateBtnMultiple = objects => {
+    objects.map(object => {
         enabled(object.btn, object.enable);
     });
 };
 
-export const updateRoomTitle = (newTitle) => {
+export const updateRoomTitle = newTitle => {
     roomTitle.innerHTML = newTitle;
     roomTitle.setAttribute('maze-title', newTitle);
 };
 
-export const incProgress = () => {
-    progressBar.setAttribute('value', parseInt(progressBar.getAttribute('value')) + 1);
+export const progress = override => {
+    const percentage = (data.player.collected / (data.player.collected + data.treasure.collection.length)) * 100;
+    progressValue.style.setProperty('--progress-width', override ?? percentage);
+    if (percentage === 100) data.won = true;
 };
 
 const setup = () => {
@@ -86,8 +88,8 @@ const setup = () => {
     playerLayer.clearRect(0, 0, _.stageSize, _.stageSize);
     updateRoomTitle(data.roomTitle);
 
-    progressBar.setAttribute('value', 0);
-    progressBar.setAttribute('max', data.treasure.collection.length);
+    progressValue.setAttribute('value', 0);
+    progressValue.setAttribute('max', data.treasure.collection.length);
 };
 
 export const room = () => {

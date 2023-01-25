@@ -9,6 +9,10 @@
 
 :root {
 	--button-size: 50px;
+	--outside-highlight-color: rgb(227 227 227);
+	--outside-color: rgb(174 174 174);
+	--inside-color: rgb(74 74 74);
+	--box-shadow: inset 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
 }
 
 html, body {
@@ -32,12 +36,14 @@ html, body {
 .stage {
 	transform: translateY(0px);
 	background-color: black;
+	border-radius: 15px;
 	height: 310px;
 	width: 310px;
 }
 
 canvas {
 	image-rendering: pixelated;
+	border-radius: inherit;
     position: absolute;
 }
 
