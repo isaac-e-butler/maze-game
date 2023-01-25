@@ -12,3 +12,5 @@ progress::-webkit-progress-bar {
 progress::-webkit-progress-value {
     background-color: #ddcf5c;
 }
+
+/* counter-set <-- look into */
