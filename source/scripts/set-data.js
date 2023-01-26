@@ -48,16 +48,16 @@ const identifyObject = (colour, x, y) => {
         data.weapon = { ...data.weapon, x, y };
     } else if (sameColour(colour, objectConfig.treasure)) {
         data.treasure.collection.push({
+            collected: false,
             x,
             y,
-            collected: false,
         });
     } else if (sameColour(colour, objectConfig.enemy)) {
         data.enemy.collection.push(
             new enemyObject({
+                hp: data.enemy.hp,
                 x,
                 y,
-                hp: data.enemy.hp,
             })
         );
     }

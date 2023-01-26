@@ -66,19 +66,20 @@ export const updateBtn = (btn, update, enable = true) => {
 };
 
 export const updateBtnMultiple = objects => {
-    objects.map(object => {
-        enabled(object.btn, object.enable);
-    });
+    objects.map(object => enabled(object.btn, object.enable));
 };
 
-export const updateRoomTitle = newTitle => {
-    roomTitle.innerHTML = newTitle;
-    roomTitle.setAttribute('maze-title', newTitle);
+export const updateRoomTitle = title => {
+    roomTitle.setAttribute('maze-title', title);
+    roomTitle.innerHTML = title;
 };
 
 export const progress = override => {
-    const percentage = (data.player.collected / (data.player.collected + data.treasure.collection.length)) * 100;
-    progressValue.style.setProperty('--progress-width', override ?? percentage);
+    const total = data.player.treasure + data.treasure.collection.length;
+    const percentage = override ?? Math.round((data.player.treasure / total) * 10000) / 100;
+
+    progressValue.style.setProperty('--progress-width', percentage);
+    progressValue.setAttribute('value', `${percentage}%`);
     if (percentage === 100) data.won = true;
 };
 
@@ -87,9 +88,6 @@ const setup = () => {
     enemyLayer.clearRect(0, 0, _.stageSize, _.stageSize);
     playerLayer.clearRect(0, 0, _.stageSize, _.stageSize);
     updateRoomTitle(data.roomTitle);
-
-    progressValue.setAttribute('value', 0);
-    progressValue.setAttribute('max', data.treasure.collection.length);
 };
 
 export const room = () => {

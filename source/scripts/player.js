@@ -33,8 +33,8 @@ export const despawn = () => {
 class Player {
     constructor() {
         data.player.hasWeapon = false;
-        data.player.collected = 0;
         data.player.alive = true;
+        data.player.treasure = 0;
         this.y = data.player.y;
         this.x = data.player.x;
     }
@@ -84,7 +84,7 @@ class Player {
                         ...treasure,
                         layer: data.treasure.layer,
                     });
-                    data.player.collected += 1;
+                    data.player.treasure += 1;
                     treasure.collected = true;
                 }
 
