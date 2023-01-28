@@ -1,0 +1,13 @@
+.stage {
+	transform: translateY(0px);
+	background-color: black;
+	border-radius: 15px;
+	height: 310px;
+	width: 310px;
+}
+
+canvas {
+	image-rendering: pixelated;
+	border-radius: inherit;
+    position: absolute;
+}
