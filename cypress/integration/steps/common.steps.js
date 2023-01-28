@@ -1,29 +1,23 @@
 /// <reference types="cypress" />
 
-export const roomTitleToBe = (text) => {
-    cy.get('div#maze-title').should('contain.text', text).and('have.attr', 'maze-title', text);
+export const roomTitleToBe = text => {
+    cy.get('#maze-title').should('contain.text', text).and('have.attr', 'maze-title', text);
 };
 
-export const progressToBe = (value, max) => {
-    cy.get('progress#progress').should('have.attr', 'value', value).and('have.attr', 'max', max);
+export const progressToBe = value => {
+    cy.get('#progress-value').should('have.attr', 'value', value);
 };
 
-export const btnToBeEnabled = (id) => {
-    cy.get(`button#${id}`).should('not.be.disabled');
+export const buttonToBe = (id, config, toggle) => {
+    buttonToHaveSource(id, config);
+    buttonToBeEnabled(id, toggle);
 };
 
-export const btnToBeDisabled = (id) => {
-    cy.get(`button#${id}`).should('be.disabled');
+export const buttonToBeEnabled = (id, enabled) => {
+    if (enabled) cy.get(`button#${id}`).should('not.be.disabled');
+    else cy.get(`button#${id}`).should('be.disabled');
 };
 
-export const btnToBe = (id, action) => {
-    const keyCode = {
-        action1: 'KEY K',
-        action2: 'KEY L',
-    };
-
-    cy.get(`button#${id}`)
-        .should('have.attr', 'title', `${action.title}  -  ${keyCode[id]}`)
-        .and('have.attr', 'tabindex', '-1');
+export const buttonToHaveSource = (id, action) => {
     cy.get(`button#${id} > img`).should('have.attr', 'src', action.src);
 };

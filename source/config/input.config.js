@@ -33,4 +33,8 @@ export const inputConfig = {
             src: '',
         },
     },
+    movement: {
+        title: 'MOVE',
+        src: './source/images/icons/arrow.icon.png',
+    },
 };

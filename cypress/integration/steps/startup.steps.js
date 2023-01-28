@@ -3,13 +3,6 @@
 import { inputConfig } from '../../../source/config/input.config.js';
 import * as _ from './common.steps.js';
 
-const keyCode = {
-    up: 'W',
-    left: 'A',
-    down: 'S',
-    right: 'D',
-};
-
 export const shouldLoad = () => {
     cy.visit('../../../index.html');
 
@@ -20,24 +13,20 @@ export const shouldLoad = () => {
     canvasToExist('enemy-layer');
     canvasToExist('player-layer');
 
-    _.progressToBe(0, 0);
+    _.progressToBe('0%');
 
-    cy.get('.controls').children().should('have.length', 2);
-
-    cy.get('.movement').children().should('have.length', 4);
-    ['up', 'left', 'down', 'right'].map((keyId) => {
-        cy.get(`button#${keyId}`)
-            .should('have.attr', 'title', keyCode[keyId])
-            .and('have.attr', 'tabindex', '-1')
-            .and('be.disabled');
-        cy.get(`button#${keyId} > span`).should('have.class', `arrow ${keyId}`);
-    });
-
-    cy.get('.actions').children().should('have.length', 2);
-    _.btnToBe('action1', inputConfig.action.unassigned);
-    _.btnToBe('action2', inputConfig.action.start);
+    cy.get('.controls').children().should('have.length', 6);
+    _.buttonToBe('up', inputConfig.movement, false);
+    _.buttonToBe('right', inputConfig.movement, false);
+    _.buttonToBe('down', inputConfig.movement, false);
+    _.buttonToBe('left', inputConfig.movement, false);
+    _.buttonToBe('action1', inputConfig.action.unassigned, false);
+    _.buttonToBe('action2', inputConfig.action.start, true);
 
     canvasToExist('map-image', 'hide-me', '31');
+
+    // width is 400, canvas is 310 | 40 either side
+    cy.screenshot('start-up', { clip: { x: 40, y: 84, width: 320, height: 600 }, overwrite: true });
 };
 
 const canvasToExist = (id, className = '', size = '310') => {
