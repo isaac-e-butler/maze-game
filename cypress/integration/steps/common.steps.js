@@ -18,6 +18,10 @@ export const buttonToBeEnabled = (id, enabled) => {
     else cy.get(`button#${id}`).should('be.disabled');
 };
 
-export const buttonToHaveSource = (id, action) => {
-    cy.get(`button#${id} > img`).should('have.attr', 'src', action.src);
+export const buttonToHaveSource = (id, config) => {
+    cy.get(`button#${id} > img`).should('have.attr', 'src', config.src);
+};
+
+export const takeScreenshot = name => {
+    cy.screenshot(name, { clip: { x: 40, y: 84, width: 320, height: 600 }, overwrite: true });
 };

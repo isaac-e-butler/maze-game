@@ -26,12 +26,12 @@ export const shouldLoad = () => {
     canvasToExist('map-image', 'hide-me', '31');
 
     // width is 400, canvas is 310 | 40 either side
-    cy.screenshot('start-up', { clip: { x: 40, y: 84, width: 320, height: 600 }, overwrite: true });
+    _.takeScreenshot('start-up');
 };
 
 const canvasToExist = (id, className = '', size = '310') => {
     cy.get(`canvas#${id}`)
-        .should('have.attr', 'width', size)
+        .should('have.class', className)
         .and('have.attr', 'height', size)
-        .and('have.class', className);
+        .and('have.attr', 'width', size);
 };
