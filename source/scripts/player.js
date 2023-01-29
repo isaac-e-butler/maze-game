@@ -135,7 +135,7 @@ class Player {
             });
 
             if (!blocked) {
-                renderer.clearSingular({ ...data.player, x: this.x, y: this.y });
+                renderer.clearCanvas(data.player.layer);
                 this.x += x_dir;
                 this.y += y_dir;
                 this.x = _.restrict(this.x);

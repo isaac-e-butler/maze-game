@@ -32,6 +32,10 @@ export const clearSingular = object => {
     object.layer.clearRect(object.x, object.y, _.objectSize, _.objectSize);
 };
 
+export const clearCanvas = layer => {
+    layer.clearRect(0, 0, _.stageSize, _.stageSize);
+};
+
 const getEnemyImageSource = health => {
     const healthSection = objectConfig.enemy.hp / 3;
 
@@ -41,7 +45,7 @@ const getEnemyImageSource = health => {
 };
 
 export const enemies = () => {
-    data.enemy.layer.clearRect(0, 0, _.stageSize, _.stageSize);
+    clearCanvas(data.enemy.layer);
     data.enemy.collection.forEach(enemy => {
         const image = new Image();
         image.onload = () => {
