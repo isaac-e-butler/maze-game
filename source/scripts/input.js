@@ -1,6 +1,7 @@
 import { inputConfig } from '../config/input.config.js';
 import * as roomSelect from './room-select.js';
 import { data, status } from './data.js';
+import { updateBtnMultiple } from './renderer.js';
 
 export const list = [
     { id: 'up', code: inputConfig.keyCode.up, btn: undefined },
@@ -13,23 +14,21 @@ export const list = [
 
 let inputReady = true;
 
-const inputListener = (event) => {
+const inputListener = event => {
     const keyDown = event.type === 'keydown';
     const keyUp = event.type === 'keyup';
 
     const displayInput = () => {
-        const pressed = ' pressed';
+        const pressed = 'pressed';
 
         if (!event.btn) event.btn = getBtn(event.code);
 
         if (event.btn) {
             if (keyDown && !event.btn.hasAttribute('disabled')) {
-                if (!event.btn.className.includes(pressed))
-                    event.btn.className += pressed;
+                if (!event.btn.classList.contains(pressed)) event.btn.classList.add(pressed);
             }
             if (keyUp) {
-                if (event.btn.className.includes(pressed))
-                    event.btn.className = event.btn.className.replace(pressed, '');
+                if (event.btn.classList.contains(pressed)) event.btn.classList.remove(pressed);
             }
         }
     };
@@ -70,7 +69,7 @@ export const setup = () => {
     document.addEventListener('keydown', inputListener);
     document.addEventListener('keyup', inputListener);
 
-    list.map((event) => {
+    list.map(event => {
         const btn = document.getElementById(event.id);
 
         btn.onmousedown = () => inputListener({ ...event, type: 'keydown' });
@@ -78,9 +77,18 @@ export const setup = () => {
 
         event.btn = btn;
     });
+
+    updateBtnMultiple([
+        { btn: getBtn('up'), enable: false },
+        { btn: getBtn('left'), enable: false },
+        { btn: getBtn('down'), enable: false },
+        { btn: getBtn('right'), enable: false },
+        { btn: getBtn('action1'), enable: false },
+        { btn: getBtn('action2'), enable: false },
+    ]);
 };
 
-export const getBtn = (info) => {
+export const getBtn = info => {
     for (let i = 0; i < list.length; i++) {
         const input = list[i];
 
@@ -88,7 +96,7 @@ export const getBtn = (info) => {
     }
 };
 
-export const getFormattedCode = (btn) => {
+export const getFormattedCode = btn => {
     for (let i = 0; i < list.length; i++) {
         const input = list[i];
 

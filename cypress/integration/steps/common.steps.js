@@ -23,5 +23,6 @@ export const buttonToHaveSource = (id, config) => {
 };
 
 export const takeScreenshot = name => {
+    // width is 400, canvas is 310 | 40 either side
     cy.screenshot(name, { clip: { x: 40, y: 84, width: 320, height: 600 }, overwrite: true });
 };

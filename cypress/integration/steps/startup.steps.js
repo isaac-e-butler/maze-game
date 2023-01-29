@@ -25,7 +25,6 @@ export const shouldLoad = () => {
 
     canvasToExist('map-image', 'hide-me', '31');
 
-    // width is 400, canvas is 310 | 40 either side
     _.takeScreenshot('start-up');
 };
 
