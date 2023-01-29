@@ -68,14 +68,16 @@ const inputListener = event => {
 export const setup = () => {
     document.addEventListener('keydown', inputListener);
     document.addEventListener('keyup', inputListener);
+    document.addEventListener('touchstart', inputListener);
+    document.addEventListener('touchcancel', inputListener);
 
-    list.map(event => {
-        const btn = document.getElementById(event.id);
+    list.map(control => {
+        const btn = document.getElementById(control.id);
 
-        btn.onmousedown = () => inputListener({ ...event, type: 'keydown' });
-        btn.onmouseup = () => inputListener({ ...event, type: 'keyup' });
+        btn.onmousedown = () => inputListener({ ...control, type: 'keydown' });
+        btn.onmouseup = () => inputListener({ ...control, type: 'keyup' });
 
-        event.btn = btn;
+        control.btn = btn;
     });
 
     updateBtnMultiple([
