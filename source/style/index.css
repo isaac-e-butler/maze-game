@@ -26,6 +26,10 @@ html, body {
     margin: 0px;
 }
 
+html {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .container, .hide-me {
 	transform: translate(-50%, -75%);
     position: absolute;
@@ -39,4 +43,13 @@ html, body {
 	z-index: -1;
 	width: auto;
 	margin: 0px;
+}
+
+#version {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-size: 16px;
+    margin: 0px;
+    bottom: 0%;
+    left: 50%;
 }

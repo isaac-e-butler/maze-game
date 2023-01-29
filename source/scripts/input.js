@@ -66,10 +66,10 @@ const inputListener = event => {
 };
 
 export const setup = () => {
-    document.addEventListener('keydown', inputListener);
-    document.addEventListener('keyup', inputListener);
     document.addEventListener('touchstart', inputListener);
     document.addEventListener('touchcancel', inputListener);
+    document.addEventListener('keydown', inputListener);
+    document.addEventListener('keyup', inputListener);
 
     list.map(control => {
         const btn = document.getElementById(control.id);
