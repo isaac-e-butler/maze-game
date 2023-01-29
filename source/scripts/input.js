@@ -32,12 +32,12 @@ const inputListener = event => {
         }
     };
 
-    const limit = () => {
+    const limit = delay => {
         if (inputReady) {
             inputReady = false;
             setTimeout(() => {
                 inputReady = true;
-            }, 75);
+            }, delay);
         }
     };
 
@@ -53,14 +53,15 @@ const inputListener = event => {
                 break;
             case status.selecting:
                 roomSelect.handleInput(event);
+                limit(200);
                 break;
             case status.playing:
                 data.player.object.handleInput(event);
+                limit(75);
                 break;
             default:
                 break;
         }
-        limit();
     }
 };
 

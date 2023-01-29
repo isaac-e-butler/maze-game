@@ -26,6 +26,7 @@ export const despawn = () => {
         { btn: input.getBtn('down'), enable: false },
         { btn: input.getBtn('right'), enable: false },
     ]);
+    input.controls.forEach(control => control.btn.classList.remove('pressed'));
 
     data.status = status.selecting;
 };
@@ -135,11 +136,11 @@ class Player {
             });
 
             if (!blocked) {
-                renderer.clearCanvas(data.player.layer);
                 this.x += x_dir;
                 this.y += y_dir;
                 this.x = _.restrict(this.x);
                 this.y = _.restrict(this.y);
+                renderer.clearCanvas(data.player.layer);
                 renderer.singular({ ...data.player, x: this.x, y: this.y });
             }
         }
