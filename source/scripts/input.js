@@ -3,7 +3,8 @@ import * as roomSelect from './room-select.js';
 import { data, status } from './data.js';
 import { updateBtnMultiple } from './renderer.js';
 
-export const list = [
+let inputReady = true;
+export const controls = [
     { id: 'up', code: inputConfig.keyCode.up, btn: undefined },
     { id: 'left', code: inputConfig.keyCode.left, btn: undefined },
     { id: 'down', code: inputConfig.keyCode.down, btn: undefined },
@@ -11,8 +12,6 @@ export const list = [
     { id: 'action1', code: inputConfig.keyCode.action1, btn: undefined },
     { id: 'action2', code: inputConfig.keyCode.action2, btn: undefined },
 ];
-
-let inputReady = true;
 
 const inputListener = event => {
     const keyDown = event.type === 'keydown';
@@ -24,11 +23,11 @@ const inputListener = event => {
         if (!event.btn) event.btn = getBtn(event.code);
 
         if (event.btn) {
-            if (keyDown && !event.btn.hasAttribute('disabled')) {
-                if (!event.btn.classList.contains(pressed)) event.btn.classList.add(pressed);
+            if (keyDown && !event.btn.hasAttribute('disabled') && !event.btn.classList.contains(pressed)) {
+                event.btn.classList.add(pressed);
             }
-            if (keyUp) {
-                if (event.btn.classList.contains(pressed)) event.btn.classList.remove(pressed);
+            if (keyUp && event.btn.classList.contains(pressed)) {
+                event.btn.classList.remove(pressed);
             }
         }
     };
@@ -66,16 +65,15 @@ const inputListener = event => {
 };
 
 export const setup = () => {
-    document.addEventListener('touchstart', inputListener);
-    document.addEventListener('touchcancel', inputListener);
     document.addEventListener('keydown', inputListener);
     document.addEventListener('keyup', inputListener);
 
-    list.map(control => {
+    controls.map(control => {
         const btn = document.getElementById(control.id);
 
-        btn.onmousedown = () => inputListener({ ...control, type: 'keydown' });
-        btn.onmouseup = () => inputListener({ ...control, type: 'keyup' });
+        btn.onpointerdown = () => inputListener({ ...control, type: 'keydown' });
+        btn.onpointerleave = () => inputListener({ ...control, type: 'keyup' });
+        btn.onpointerup = () => inputListener({ ...control, type: 'keyup' });
 
         control.btn = btn;
     });
@@ -91,16 +89,16 @@ export const setup = () => {
 };
 
 export const getBtn = info => {
-    for (let i = 0; i < list.length; i++) {
-        const input = list[i];
+    for (let i = 0; i < controls.length; i++) {
+        const input = controls[i];
 
         if (info === input.id || info === input.code) return input.btn;
     }
 };
 
 export const getFormattedCode = btn => {
-    for (let i = 0; i < list.length; i++) {
-        const input = list[i];
+    for (let i = 0; i < controls.length; i++) {
+        const input = controls[i];
 
         if (btn === input.btn)
             return input.code
