@@ -67,9 +67,7 @@ class Player {
 
     interact() {
         if (!data.player.hasWeapon) {
-            const canCollectWeapon = _.withinArea(this.x, this.y, data.weapon);
-
-            if (canCollectWeapon) {
+            if (_.withinArea(this.x, this.y, data.weapon)) {
                 data.player.hasWeapon = true;
                 renderer.clearSingular(data.weapon);
                 renderer.enabled(input.getBtn('action1'));
@@ -78,9 +76,7 @@ class Player {
 
         data.treasure.collection = data.treasure.collection
             .map(treasure => {
-                const canCollectTreasure = _.withinArea(this.x, this.y, treasure);
-
-                if (canCollectTreasure) {
+                if (_.withinArea(this.x, this.y, treasure)) {
                     renderer.clearSingular({
                         ...treasure,
                         layer: data.treasure.layer,
@@ -102,21 +98,16 @@ class Player {
 
             data.enemy.collection = data.enemy.collection
                 .map(enemy => {
-                    const canAttack = _.withinArea(this.x, this.y, enemy);
-
-                    if (canAttack) {
+                    if (_.withinArea(this.x, this.y, enemy)) {
                         shouldRender = true;
                         enemy.hp -= 1;
                     }
 
                     return enemy;
                 })
-                .filter(enemy => {
-                    const dead = enemy.hp <= 0;
-                    return !dead;
-                });
+                .filter(enemy => !(enemy.hp <= 0));
 
-            if (shouldRender) renderer.enemies(); // lazy approach
+            if (shouldRender) renderer.enemies();
         }
     }
 

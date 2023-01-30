@@ -88,9 +88,9 @@ export const progress = override => {
 };
 
 const setup = () => {
-    miscLayer.clearRect(0, 0, _.stageSize, _.stageSize);
-    enemyLayer.clearRect(0, 0, _.stageSize, _.stageSize);
-    playerLayer.clearRect(0, 0, _.stageSize, _.stageSize);
+    clearCanvas(miscLayer);
+    clearCanvas(enemyLayer);
+    clearCanvas(playerLayer);
     updateRoomTitle(data.roomTitle);
 };
 

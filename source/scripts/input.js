@@ -91,18 +91,14 @@ export const setup = () => {
 
 export const getBtn = info => {
     for (let i = 0; i < controls.length; i++) {
-        const input = controls[i];
-
-        if (info === input.id || info === input.code) return input.btn;
+        if (info === controls[i].id || info === controls[i].code) return controls[i].btn;
     }
 };
 
 export const getFormattedCode = btn => {
     for (let i = 0; i < controls.length; i++) {
-        const input = controls[i];
-
-        if (btn === input.btn)
-            return input.code
+        if (btn === controls[i].btn)
+            return controls[i].code
                 .replace(/([A-Z])/g, ' $1')
                 .toUpperCase()
                 .trim();

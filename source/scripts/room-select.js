@@ -28,7 +28,7 @@ const show = updateIndex => {
     setData(mazeConfig.rooms[index]);
 };
 
-const select = () => {
+const selected = () => {
     data.status = status.playing;
     player.spawn();
 
@@ -54,7 +54,7 @@ export const handleInput = event => {
                 show(1);
                 break;
             case inputConfig.keyCode.action2:
-                select();
+                selected();
                 break;
             default:
                 break;

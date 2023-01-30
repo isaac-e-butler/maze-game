@@ -8,7 +8,7 @@ const mapImage = document.getElementById('map-image').getContext('2d', { willRea
 const mapSize = 31;
 
 export const setData = room => {
-    mapImage.clearRect(0, 0, mapSize, mapSize);
+    renderer.clearCanvas(mapImage);
     const image = new Image();
     clear();
 
@@ -40,19 +40,19 @@ export const setData = room => {
 };
 
 const identifyObject = (colour, x, y) => {
-    if (sameColour(colour, objectConfig.wall)) {
+    if (colourMatches(colour, objectConfig.wall)) {
         data.walls.collection.push({ x, y });
-    } else if (sameColour(colour, objectConfig.player)) {
+    } else if (colourMatches(colour, objectConfig.player)) {
         data.player = { ...data.player, x, y };
-    } else if (sameColour(colour, objectConfig.weapon)) {
+    } else if (colourMatches(colour, objectConfig.weapon)) {
         data.weapon = { ...data.weapon, x, y };
-    } else if (sameColour(colour, objectConfig.treasure)) {
+    } else if (colourMatches(colour, objectConfig.treasure)) {
         data.treasure.collection.push({
             collected: false,
             x,
             y,
         });
-    } else if (sameColour(colour, objectConfig.enemy)) {
+    } else if (colourMatches(colour, objectConfig.enemy)) {
         data.enemy.collection.push(
             new enemyObject({
                 hp: data.enemy.hp,
@@ -72,5 +72,5 @@ const clear = () => {
     data.treasure.collection = [];
 };
 
-const sameColour = (colour, object) =>
+const colourMatches = (colour, object) =>
     colour.red === object.red && colour.green === object.green && colour.blue === object.blue;
