@@ -1,36 +1,36 @@
 /// <reference types="cypress" />
 
 import { inputConfig } from '../../../source/config/input.config.js';
-import * as _ from './common.steps.js';
+import * as common from './common.steps.js';
 
 export const shouldLoad = () => {
     cy.visit('../../../index.html');
 
-    _.roomTitleToBe('MAZE GAME');
+    common.roomTitleToBe('MAZE GAME');
 
     cy.get('.stage').children().should('have.length', 3);
     canvasToExist('misc-layer');
     canvasToExist('enemy-layer');
     canvasToExist('player-layer');
 
-    _.progressToBe('0%');
+    common.progressToBe('0%');
 
     cy.get('.controls').children().should('have.length', 6);
-    _.buttonToBe('up', inputConfig.movement, false);
-    _.buttonToBe('right', inputConfig.movement, false);
-    _.buttonToBe('down', inputConfig.movement, false);
-    _.buttonToBe('left', inputConfig.movement, false);
-    _.buttonToBe('action1', inputConfig.action.unassigned, false);
-    _.buttonToBe('action2', inputConfig.action.start, true);
+    common.buttonToBe('up', inputConfig.movement, false);
+    common.buttonToBe('right', inputConfig.movement, false);
+    common.buttonToBe('down', inputConfig.movement, false);
+    common.buttonToBe('left', inputConfig.movement, false);
+    common.buttonToBe('action1', inputConfig.action.unassigned, false);
+    common.buttonToBe('action2', inputConfig.action.start, true);
 
     canvasToExist('map-image', 'hide-me', '31');
 
-    _.takeScreenshot('start-up');
+    common.takeScreenshot('start-up');
 };
 
-const canvasToExist = (id, className = '', size = '310') => {
+function canvasToExist(id, className = '', size = '310') {
     cy.get(`canvas#${id}`)
         .should('have.class', className)
         .and('have.attr', 'height', size)
         .and('have.attr', 'width', size);
-};
+}
