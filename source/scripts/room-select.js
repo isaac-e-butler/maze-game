@@ -16,10 +16,11 @@ export const start = () => {
         { btn: input.getBtn('down'), enable: false },
         { btn: input.getBtn('right'), enable: true },
     ]);
+    renderer.progress(0);
     show(0);
 };
 
-const show = (updateIndex) => {
+const show = updateIndex => {
     index += updateIndex;
     if (index < 0) index = mazeConfig.rooms.length - 1;
     if (index >= mazeConfig.rooms.length) index = 0;
@@ -27,27 +28,23 @@ const show = (updateIndex) => {
     setData(mazeConfig.rooms[index]);
 };
 
-const select = () => {
+const selected = () => {
     data.status = status.playing;
     player.spawn();
 
-    const update = () => {
+    data.interval = setInterval(() => {
         if (data.won || !data.player.alive) {
             renderer.updateRoomTitle(`YOU ${data.won ? 'WON' : 'LOST'}`);
             clearInterval(data.interval);
             player.despawn();
         } else {
-            data.enemy.collection.map((enemy) => {
-                enemy.move();
-            });
+            data.enemy.collection.map(enemy => enemy.move());
             renderer.enemies();
         }
-    };
-
-    data.interval = setInterval(update, 200);
+    }, 200);
 };
 
-export const handleInput = (event) => {
+export const handleInput = event => {
     if (!data.player.object) {
         switch (event.code) {
             case inputConfig.keyCode.left:
@@ -57,7 +54,7 @@ export const handleInput = (event) => {
                 show(1);
                 break;
             case inputConfig.keyCode.action2:
-                select();
+                selected();
                 break;
             default:
                 break;

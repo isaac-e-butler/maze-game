@@ -17,6 +17,7 @@ export const data = {
         alive: false,
         x: undefined,
         y: undefined,
+        treasure: 0,
     },
     enemy: {
         src_full: objectConfig.enemy.src_full,

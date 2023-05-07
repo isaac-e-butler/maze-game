@@ -1,56 +1,55 @@
-@import url('./room-title.css');
+@import url('./maze-title.css');
 @import url('./progress-bar.css');
+@import url('./control-layout.css');
 @import url('./control-buttons.css');
+@import url('./stage.css');
 @font-face {
     font-family: 'main';
     src: url('./font/syne-mono-regular.ttf');
 }
 
-html,
-body {
-    margin: 0px;
-    padding: 0px;
-    background-color: #222222;
+:root {
+	--button-size: 50px;
+	--box-shadow: inset 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
+	--outside-highlight-color: rgb(227 227 227);
+	--outside-color: rgb(174 174 174);
+	--inside-color: rgb(74 74 74);
+}
+
+html, body {
+	background-color: #222222;
     font-family: 'main';
-    color: white;
-    user-select: none;
     touch-action: none;
+	user-select: none;
+	color: white;
+	padding: 0px;
+    margin: 0px;
 }
 
-.container {
+html {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container, .hide-me {
+	transform: translate(-50%, -75%);
     position: absolute;
+	width: 310px;
+    left: 50%;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 310px;
-    height: 540px;
-    display: flex;
-    justify-content: center;
-}
-
-div.stage {
-    position: absolute;
-    background-color: black;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 37%;
-}
-
-div.stage {
-    width: 310px;
-    height: 310px;
-}
-
-canvas {
-    position: absolute;
 }
 
 .hide-me {
     visibility: hidden;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+	z-index: -1;
+	width: auto;
+	margin: 0px;
+}
+
+#version {
     transform: translate(-50%, -50%);
-    z-index: -1;
-    margin: 0px 5px;
+    position: absolute;
+    font-size: 16px;
+    margin: 0px;
+    bottom: 0%;
+    left: 50%;
 }

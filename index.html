@@ -1,58 +1,63 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="author" content="GhostRunners25 - Isaac Butler" />
         <meta
             name="description"
-            content="A maze game on the web. 
-            Solve the maze to collect treasures while avoiding enemies. 
-            Find the sword to slash the enemies away."
+            content="A maze game on the web. Solve the maze to collect treasures while avoiding enemies. Find the sword to slash the enemies away."
         />
-        <meta name="keywords" content="Maze, Game, GhostRunners25, GR25" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="keywords" content="maze, game, ghostrunners25, gr25" />
+        <meta name="author" content="GhostRunners25 - Isaac Butler" />
         <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
+
         <title>MAZE GAME</title>
+
         <link rel="icon" type="image/x-icon" href="./source/images/icons/icon.png" />
         <link rel="stylesheet" type="text/css" href="./source/style/index.css" />
-        <script type="module" src="./source/main.js"></script>
+
+        <script type="module" src="./source/index.js"></script>
     </head>
     <body>
         <div class="container">
-            <div id="room-title" roomTitle="MAZE GAME">MAZE GAME</div>
+            <div class="title-container">
+                <h1 id="maze-title" maze-title="MAZE GAME">MAZE GAME</h1>
+            </div>
+
             <div class="stage">
                 <canvas width="310" height="310" id="misc-layer"></canvas>
                 <canvas width="310" height="310" id="enemy-layer"></canvas>
                 <canvas width="310" height="310" id="player-layer"></canvas>
             </div>
-            <progress id="progress" value="0" max="0"></progress>
+
+            <div id="progress-bar">
+                <div id="progress-value" value="0%"></div>
+            </div>
+
             <div class="controls">
-                <div class="movement">
-                    <button title="W" id="up" tabindex="-1" disabled>
-                        <span class="arrow up"></span>
-                    </button>
-                    <button title="A" id="left" tabindex="-1" disabled>
-                        <span class="arrow left"></span>
-                    </button>
-                    <button title="S" id="down" tabindex="-1" disabled>
-                        <span class="arrow down"></span>
-                    </button>
-                    <button title="D" id="right" tabindex="-1" disabled>
-                        <span class="arrow right"></span>
-                    </button>
-                </div>
-                <div class="actions">
-                    <button title="K" id="action1" tabindex="-1" disabled>
-                        <img src="" />
-                    </button>
-                    <button title="L" id="action2" tabindex="-1" disabled>
-                        <img src="" />
-                    </button>
-                </div>
+                <button id="up" disabled>
+                    <img src="./source/images/icons/arrow.icon.png" draggable="false" />
+                </button>
+                <button id="right" disabled>
+                    <img src="./source/images/icons/arrow.icon.png" draggable="false" />
+                </button>
+                <button id="down" disabled>
+                    <img src="./source/images/icons/arrow.icon.png" draggable="false" />
+                </button>
+                <button id="left" disabled>
+                    <img src="./source/images/icons/arrow.icon.png" draggable="false" />
+                </button>
+
+                <button id="action1" disabled>
+                    <img src="" draggable="false" />
+                </button>
+                <button id="action2" disabled>
+                    <img src="" draggable="false" />
+                </button>
             </div>
         </div>
+
+        <p id="version">v2.0.0</p>
+
         <canvas width="31" height="31" id="map-image" class="hide-me"></canvas>
     </body>
 </html>

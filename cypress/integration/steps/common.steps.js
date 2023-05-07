@@ -1,33 +1,28 @@
 /// <reference types="cypress" />
 
-export const roomTitleToBe = (text) => {
-    cy.get('div#room-title')
-        .should('contain.text', text)
-        .and('have.attr', 'roomTitle', text);
-};
+export function roomTitleToBe(text) {
+    cy.get('#maze-title').should('contain.text', text).and('have.attr', 'maze-title', text);
+}
 
-export const progressToBe = (value, max) => {
-    cy.get('progress#progress')
-        .should('have.attr', 'value', value)
-        .and('have.attr', 'max', max);
-};
+export function progressToBe(value) {
+    cy.get('#progress-value').should('have.attr', 'value', value);
+}
 
-export const btnToBeEnabled = (id) => {
-    cy.get(`button#${id}`).should('not.be.disabled');
-};
+export function buttonToBe(id, config, toggle) {
+    buttonToHaveSource(id, config);
+    buttonToBeEnabled(id, toggle);
+}
 
-export const btnToBeDisabled = (id) => {
-    cy.get(`button#${id}`).should('be.disabled');
-};
+export function buttonToBeEnabled(id, enabled) {
+    if (enabled) cy.get(`button#${id}`).should('not.be.disabled');
+    else cy.get(`button#${id}`).should('be.disabled');
+}
 
-export const btnToBe = (id, action) => {
-    const keyCode = {
-        action1: 'KEY K',
-        action2: 'KEY L',
-    };
+export function buttonToHaveSource(id, config) {
+    cy.get(`button#${id} > img`).should('have.attr', 'src', config.src);
+}
 
-    cy.get(`button#${id}`)
-        .should('have.attr', 'title', `${action.title}  -  ${keyCode[id]}`)
-        .and('have.attr', 'tabindex', '-1');
-    cy.get(`button#${id} > img`).should('have.attr', 'src', action.src);
-};
+export function takeScreenshot(name) {
+    // width is 400, canvas is 310 | 40 either side
+    cy.screenshot(name, { clip: { x: 40, y: 74, width: 320, height: 550 }, overwrite: true });
+}

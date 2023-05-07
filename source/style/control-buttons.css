@@ -1,108 +1,73 @@
-.movement {
-    position: absolute;
-    top: 76.5%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-}
-
-.arrow {
-    border: solid white;
-    border-width: 0px 6px 6px 0px;
-    display: inline-block;
-    padding: 6px;
-}
-
-.right {
-    transform: rotate(-45deg);
-}
-
-.left {
-    transform: rotate(135deg);
-}
-
-.up {
-    transform: rotate(-135deg);
-}
-
-.down {
-    transform: rotate(45deg);
-}
-
-#right {
-    padding: 2px 6px 0px 0px;
-    left: 48px;
-    top: 48px;
-}
-
-#left {
-    padding: 2px 0px 0px 6px;
-    left: -48px;
-    top: 48px;
-}
-
-#up {
-    padding: 8px 0px 0px 0px;
-    left: 0px;
-    top: 0px;
-}
-
-#down {
-    padding: 0px 0px 6px 0px;
-    top: 96px;
-    left: 0px;
-}
-
-.actions {
-    position: absolute;
-    top: 76.5%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-}
-
-#action1 {
-    left: 0px;
-    top: 0px;
-}
-
-#action2 {
-    left: 48px;
-    top: 96px;
-}
-
-.controls button {
-    -webkit-tap-highlight-color: transparent;
-    transform: translate(-50%, -50%);
-    border: 1px solid #555555;
-    background-color: #333333;
-    outline: transparent 0px;
-    font-family: 'main';
-    position: absolute;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 24px;
-    color: white;
-    height: 46px;
-    width: 46px;
-    left: 50%;
-    top: 75%;
-}
-
 button img {
-    transform: translate(-50%, -50%);
-    image-rendering: crisp-edges;
+	width: calc(var(--button-size) - 10px);
+	transform: translate(-50%, -50%);
+	transition: ease-out 0.2s;
+    pointer-events: none;
     position: absolute;
-    width: 30px;
-    left: 50%;
-    top: 50%;
 }
 
-button.pressed,
-button:active {
-    background-color: #222222;
-    border-color: #333333;
+button, button::before {
+    height: var(--button-size);
+    width: var(--button-size);
+	transition: ease 0.1s;
+	box-sizing: border-box;
+    outline: transparent;
+	border-radius: 15px;
+    position: absolute;
+    cursor: pointer;
+	padding: 0px;
 }
+
+button {
+	border: 3px solid var(--outside-highlight-color);
+	background-color: var(--inside-color);
+	transform: translate(-50%, -50%);
+    box-shadow: var(--box-shadow);
+    transform-style: preserve-3d;
+}
+
+button::before {
+    transform: translateZ(-1px) translate(-50%, -20%);
+    background-color: var(--outside-color);
+	border: 3px var(--outside-color);
+    content: '';
+}
+
+/* #region hover */
+
+button:hover {
+    transform: translate(-50%, -45%);
+}
+
+button:hover::before {
+    transform: translateZ(-1px) translate(-50%, -25%);
+}
+
+/* #endregion */
+/* #region clicked */
+
+button:active, button.pressed {
+    transform: translate(-50%, -20%);
+}
+
+button:active::before, button.pressed::before {
+    transform: translateZ(-1px) translate(-50%, -50%);
+}
+
+/* #endregion */
+/* #region disabled */
 
 button:disabled {
-    filter: brightness(0.5);
+    transform: translate(-50%, -20%);
     pointer-events: none;
 }
+
+button:disabled::before {
+    transform: translateZ(-1px) translate(-50%, -50%);
+}
+
+button:disabled img {
+	filter: brightness(0.2);
+}
+
+/* #endregion */

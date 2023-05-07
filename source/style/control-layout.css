@@ -1,0 +1,51 @@
+.controls {
+	transform: translateX(calc((310px - (var(--button-size) * 6)) / 2));
+	width: calc(var(--button-size) * 6);
+	position: relative;
+}
+
+button#right {
+    left: calc(var(--button-size) * 2.5);
+    top: calc(var(--button-size) * 1.5);
+}
+
+button#right img {
+	transform: translate(-50%, -50%) rotate(90deg);
+}
+
+button#left {
+	left: calc(var(--button-size) * 0.5);
+    top: calc(var(--button-size) * 1.5);
+}
+
+button#left img {
+	transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+button#up {
+    left: calc(var(--button-size) * 1.5);
+    top: calc(var(--button-size) * 0.5);
+}
+
+button#up img {
+	transform: translate(-50%, -50%) rotate(0deg);
+}
+
+button#down {
+    top: calc(var(--button-size) * 2.5);
+    left: calc(var(--button-size) * 1.5);
+}
+
+button#down img {
+	transform: translate(-50%, -50%) rotate(180deg);
+}
+
+#action1 {
+    left: calc(var(--button-size) * 4.5);
+    top: calc(var(--button-size) * 0.5);
+}
+
+#action2 {
+    left: calc(var(--button-size) * 5.5);
+    top: calc(var(--button-size) * 2.5);
+}

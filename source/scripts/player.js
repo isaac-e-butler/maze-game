@@ -26,6 +26,7 @@ export const despawn = () => {
         { btn: input.getBtn('down'), enable: false },
         { btn: input.getBtn('right'), enable: false },
     ]);
+    input.controls.forEach(control => control.btn.classList.remove('pressed'));
 
     data.status = status.selecting;
 };
@@ -34,6 +35,7 @@ class Player {
     constructor() {
         data.player.hasWeapon = false;
         data.player.alive = true;
+        data.player.treasure = 0;
         this.y = data.player.y;
         this.x = data.player.x;
     }
@@ -65,9 +67,7 @@ class Player {
 
     interact() {
         if (!data.player.hasWeapon) {
-            const canCollectWeapon = _.withinArea(this.x, this.y, data.weapon);
-
-            if (canCollectWeapon) {
+            if (_.withinArea(this.x, this.y, data.weapon)) {
                 data.player.hasWeapon = true;
                 renderer.clearSingular(data.weapon);
                 renderer.enabled(input.getBtn('action1'));
@@ -75,25 +75,21 @@ class Player {
         }
 
         data.treasure.collection = data.treasure.collection
-            .map((treasure) => {
-                const canCollectTreasure = _.withinArea(this.x, this.y, treasure);
-
-                if (canCollectTreasure) {
+            .map(treasure => {
+                if (_.withinArea(this.x, this.y, treasure)) {
                     renderer.clearSingular({
                         ...treasure,
                         layer: data.treasure.layer,
                     });
-                    renderer.incProgress();
+                    data.player.treasure += 1;
                     treasure.collected = true;
                 }
 
                 return treasure;
             })
-            .filter((treasure) => {
-                return !treasure.collected;
-            });
+            .filter(treasure => !treasure.collected);
 
-        data.won = data.treasure.collection.length === 0;
+        renderer.progress();
     }
 
     attack() {
@@ -101,27 +97,22 @@ class Player {
             let shouldRender = false;
 
             data.enemy.collection = data.enemy.collection
-                .map((enemy) => {
-                    const canAttack = _.withinArea(this.x, this.y, enemy);
-
-                    if (canAttack) {
+                .map(enemy => {
+                    if (_.withinArea(this.x, this.y, enemy)) {
                         shouldRender = true;
                         enemy.hp -= 1;
                     }
 
                     return enemy;
                 })
-                .filter((enemy) => {
-                    const dead = enemy.hp <= 0;
-                    return !dead;
-                });
+                .filter(enemy => !(enemy.hp <= 0));
 
-            if (shouldRender) renderer.enemies(); // lazy approach
+            if (shouldRender) renderer.enemies();
         }
     }
 
     isTouchingEnemy() {
-        data.enemy.collection.map((enemy) => {
+        data.enemy.collection.map(enemy => {
             if (_.isTouching(this.x, this.y, enemy)) {
                 data.player.alive = false;
             }
@@ -136,11 +127,11 @@ class Player {
             });
 
             if (!blocked) {
-                renderer.clearSingular({ ...data.player, x: this.x, y: this.y });
                 this.x += x_dir;
                 this.y += y_dir;
                 this.x = _.restrict(this.x);
                 this.y = _.restrict(this.y);
+                renderer.clearCanvas(data.player.layer);
                 renderer.singular({ ...data.player, x: this.x, y: this.y });
             }
         }
