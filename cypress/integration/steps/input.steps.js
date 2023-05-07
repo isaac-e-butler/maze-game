@@ -1,11 +1,13 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
 /// <reference types="cypress" />
 
-export function press(key, playing = true) {
-    cy.get('html')
-        .trigger('keydown', { code: key })
-        .trigger('keyup', { code: key })
-        .wait(playing ? 80 : 205);
+export function keyPress(key, times = 1, playing = true) {
+    for (let i = 0; i < times; i++) {
+        cy.get('html')
+            .trigger('keydown', { code: key })
+            .trigger('keyup', { code: key })
+            .wait(playing ? 80 : 205);
+    }
 }
 
 export const code = {
