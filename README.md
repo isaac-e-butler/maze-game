@@ -1,6 +1,6 @@
 # MAZE-GAME
 
-### Description
+## Description
 
 Dear Player,
 
